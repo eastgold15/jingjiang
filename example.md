@@ -1,11 +1,10 @@
 ---
 theme: ./
-background: https://cover.sli.dev
 ---
 
-# Slidev Theme Starter
+# 四川大学锦江学院
 
-Presentation slides for developers
+述职ppt
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" flex="~ justify-center items-center gap-2" hover="bg-white bg-opacity-10">

@@ -1,24 +1,202 @@
+/* ======================================
+  全局根变量 两套主题切换（默认主题1：深紫磨砂政务）
+====================================== */
 :root {
-  /* default theme color */
-  /* can be overrided by uses `themeConfig` option */
-  --slidev-theme-primary: #5d8392;
+  /* ========== 主题1：深紫哑光政务主主题（体院专业申报汇报） ========== */
+  --theme-main-bg: #42205c; /* 页面大背景 哑光深紫 */
+  --theme-card-bg: #532b73; /* 磨砂内容卡片底色 */
+  --theme-card-header-bg: #4c2668; /* 表格表头加深底色 */
+  --theme-divider-line: #9d78c2; /* 浅紫分割细线 */
+  --theme-text-white: #ffffff; /* 一级标题纯白 */
+  --theme-text-yellow: #f9d240; /* 数据高亮金黄 */
+  --theme-text-gray: #d1c4e0; /* 辅助浅灰小字 */
+  --theme-text-red-total: #9e2b42; /* 总计暗酒红 */
+  --theme-accent-line: #f9d240; /* 侧边金色装饰条 */
+
+  /* ========== 主题2：浅紫清爽备用主题（对外宣讲/答辩） ========== */
+  --theme-light-bg: #f3eefa;
+  --theme-light-card-bg: #e4d9f2;
+  --theme-light-card-header-bg: #c8b4e3;
+  --theme-light-divider-line: #7b58a8;
+  --theme-light-text-main: #371a4e;
+  --theme-light-text-yellow: #d4a720;
+  --theme-light-text-gray: #6a5480;
+  --theme-light-text-red-total: #862840;
+  --theme-light-accent-line: #d4a720;
+
+  /* Slidev 默认覆盖 */
+  --slidev-theme-primary: var(--theme-divider-line);
 }
 
+/* 切换主题类：页面加 class="theme-light" 切换浅紫版 */
+.theme-light {
+  --theme-main-bg: var(--theme-light-bg);
+  --theme-card-bg: var(--theme-light-card-bg);
+  --theme-card-header-bg: var(--theme-light-card-header-bg);
+  --theme-divider-line: var(--theme-light-divider-line);
+  --theme-text-white: var(--theme-light-text-main);
+  --theme-text-yellow: var(--theme-light-text-yellow);
+  --theme-text-gray: var(--theme-light-text-gray);
+  --theme-text-red-total: var(--theme-light-text-red-total);
+  --theme-accent-line: var(--theme-light-accent-line);
+}
+
+/* ======================================
+  全局页面基础样式 磨砂底层底纹（白色低透小圆点）
+====================================== */
+.slidev-layout {
+  @apply h-full w-full p-8;
+  background-color: var(--theme-main-bg);
+  /* 底层磨砂白点底纹 不遮挡文字 */
+  /* background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px); */
+  background-size: 300px 300px;
+  /* background-size: 100% 100%; */
+  background-image:
+  /* 左上角大圆 */
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.02) 50%,
+      transparent 70%
+    ),
+    /* 右下角大圆 */
+    radial-gradient(
+        circle at bottom right,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.02) 50%,
+        transparent 70%
+      );
+  /* 全局文字默认 */
+  color: var(--theme-text-white);
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+/* 浅色主题关闭深色白点，替换淡紫圆点 */
+.theme-light .slidev-layout {
+  /* background-image: radial-gradient(rgba(123, 88, 168, 0.06) 1px, transparent 1px); */
+}
+
+/* ======================================
+  封面页 cover / intro 版式（两套主题通用布局）
+====================================== */
 .slidev-layout.cover,
 .slidev-layout.intro {
-  @apply h-full grid;
+  @apply grid h-full place-content-center gap-6;
 
+  /* 封面主标题 超大粗体 */
   h1 {
-    @apply text-6xl leading-20;
+    @apply text-6xl font-bold leading-tight;
+    color: var(--theme-text-white);
   }
-
+  /* 封面副标题 */
   h1 + p {
-    @apply -mt-2 opacity-50 mb-4;
+    @apply -mt-2 mb-4 text-xl;
+    color: var(--theme-text-gray);
   }
+  /* 封面分割线 */
+  .cover-divider {
+    @apply w-full h-px mt-4 mb-8;
+    background-color: var(--theme-divider-line);
+  }
+  /* 封面页脚左右文字 */
+  .cover-footer {
+    @apply w-full flex justify-between text-base;
+    color: var(--theme-text-gray);
+  }
+}
 
-  p + h2,
-  ul + h2,
-  table + h2 {
-    @apply mt-10;
-  }
+/* ======================================
+  内容层级间距通用控制
+====================================== */
+p + h2,
+ul + h2,
+table + h2 {
+  @apply mt-10 text-3xl font-bold;
+  color: var(--theme-text-white);
+}
+h3 {
+  @apply text-2xl font-semibold mb-3;
+  color: var(--theme-text-white);
+}
+
+/* ======================================
+  核心组件：磨砂卡片（PPT所有内容容器）
+  UnoCSS 封装磨砂块，直角、无阴影、哑光质感
+====================================== */
+.card-matte {
+  @apply p-6 w-full rounded-none border-0;
+  background-color: var(--theme-card-bg);
+  /* 磨砂雾面：轻微透明+细颗粒，无玻璃高光 */
+  filter: opacity(0.96);
+  /* 禁止立体特效 */
+  box-shadow: none;
+}
+/* 卡片左侧金色竖装饰条 搭配 .card-matte 使用 */
+.card-accent-left {
+  @apply relative pl-5;
+}
+.card-accent-left::before {
+  content: "";
+  @apply absolute left-0 top-0 bottom-0 w-1;
+  background-color: var(--theme-accent-line);
+}
+/* 底部通栏总结大卡片 */
+.card-full-width {
+  @apply mt-6 p-4 w-full;
+  background-color: var(--theme-card-header-bg);
+}
+
+/* ======================================
+  表格专用样式（匹配PPT数据表格规范）
+====================================== */
+table {
+  @apply w-full border-collapse;
+}
+/* 表头 */
+thead tr {
+  background-color: var(--theme-card-header-bg);
+}
+th {
+  @apply py-3 px-4 text-left font-bold;
+  color: var(--theme-text-white);
+  border-bottom: 1px solid var(--theme-divider-line);
+}
+/* 表格内容行 */
+td {
+  @apply py-3 px-4;
+  color: var(--theme-text-white);
+  border-bottom: 1px solid var(--theme-divider-line);
+}
+/* 删除竖边框，仅保留水平分割线 */
+th,
+td {
+  border-left: transparent;
+  border-right: transparent;
+}
+
+/* ======================================
+  文字高亮工具类 UnoCSS 直接调用
+====================================== */
+.text-data {
+  color: var(--theme-text-yellow);
+  @apply font-bold;
+}
+.text-desc {
+  color: var(--theme-text-gray);
+}
+.text-total {
+  color: var(--theme-text-red-total);
+  @apply font-bold text-xl;
+}
+
+/* ======================================
+  极简线性图标样式（灯泡/书本小图标）
+====================================== */
+.icon-line {
+  color: var(--theme-text-yellow);
+  @apply inline-block w-6 h-6 mr-2 align-middle;
+  fill: none;
+  stroke-width: 1.5;
 }
