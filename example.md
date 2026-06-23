@@ -171,27 +171,27 @@ class: "text-center"
 
 # 系统架构图
 
-<MermaidView
-  max-height="480px"
-  diagram="
+<MermaidView :max-height="480">
+
+```mermaid
 graph TB
-    subgraph &quot;📱 用户端&quot;
+    subgraph "📱 用户端"
     A[微信小程序]
     end
 
-    subgraph &quot;🏪 商家端&quot;
+    subgraph "🏪 商家端"
     B[微信小程序]
     end
 
-    subgraph &quot;🚴 骑手端&quot;
+    subgraph "🚴 骑手端"
     C[微信小程序]
     end
 
-    subgraph &quot;🖥️ 后台管理端&quot;
+    subgraph "🖥️ 后台管理端"
     D[Web管理后台]
     end
 
-    subgraph &quot;☁️ 服务器端&quot;
+    subgraph "☁️ 服务器端"
     E[Node.js / NestJS]
     F[(MySQL)]
     G[Redis缓存]
@@ -203,5 +203,6 @@ graph TB
     D --> E
     E --> F
     E --> G
-  "
-/>
+```
+
+</MermaidView>
