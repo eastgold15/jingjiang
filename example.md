@@ -178,6 +178,7 @@ class: "text-center"
 
 # 系统架构图
 
+## MermaidView 组件展示 放大缩小
 <MermaidView :max-height="480">
 
 ```mermaid
