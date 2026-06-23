@@ -3,15 +3,24 @@
 ====================================== */
 :root {
   /* ========== 主题1：深紫哑光政务主主题（体院专业申报汇报） ========== */
-  --theme-main-bg: #42205c; /* 页面大背景 哑光深紫 */
-  --theme-card-bg: #532b73; /* 磨砂内容卡片底色 */
-  --theme-card-header-bg: #4c2668; /* 表格表头加深底色 */
-  --theme-divider-line: #9d78c2; /* 浅紫分割细线 */
-  --theme-text-white: #ffffff; /* 一级标题纯白 */
-  --theme-text-yellow: #f9d240; /* 数据高亮金黄 */
-  --theme-text-gray: #d1c4e0; /* 辅助浅灰小字 */
-  --theme-text-red-total: #9e2b42; /* 总计暗酒红 */
-  --theme-accent-line: #f9d240; /* 侧边金色装饰条 */
+  --theme-main-bg: #42205c;
+  /* 页面大背景 哑光深紫 */
+  --theme-card-bg: #532b73;
+  /* 磨砂内容卡片底色 */
+  --theme-card-header-bg: #4c2668;
+  /* 表格表头加深底色 */
+  --theme-divider-line: #9d78c2;
+  /* 浅紫分割细线 */
+  --theme-text-white: #ffffff;
+  /* 一级标题纯白 */
+  --theme-text-yellow: #f9d240;
+  /* 数据高亮金黄 */
+  --theme-text-gray: #d1c4e0;
+  /* 辅助浅灰小字 */
+  --theme-text-red-total: #9e2b42;
+  /* 总计暗酒红 */
+  --theme-accent-line: #f9d240;
+  /* 侧边金色装饰条 */
 
   /* ========== 主题2：浅紫清爽备用主题（对外宣讲/答辩） ========== */
   --theme-light-bg: #f3eefa;
@@ -51,21 +60,6 @@
   /* background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px); */
   background-size: 300px 300px;
   /* background-size: 100% 100%; */
-  background-image:
-  /* 左上角大圆 */
-    radial-gradient(
-      circle at top left,
-      rgba(255, 255, 255, 0.05) 0%,
-      rgba(255, 255, 255, 0.02) 50%,
-      transparent 70%
-    ),
-    /* 右下角大圆 */
-    radial-gradient(
-        circle at bottom right,
-        rgba(255, 255, 255, 0.05) 0%,
-        rgba(255, 255, 255, 0.02) 50%,
-        transparent 70%
-      );
   /* 全局文字默认 */
   color: var(--theme-text-white);
   font-family:
@@ -73,9 +67,35 @@
     -apple-system,
     sans-serif;
 }
+
 /* 浅色主题关闭深色白点，替换淡紫圆点 */
 .theme-light .slidev-layout {
   /* background-image: radial-gradient(rgba(123, 88, 168, 0.06) 1px, transparent 1px); */
+}
+
+/* ======================================
+  圆背景布局：两张透明圆装饰
+====================================== */
+.slidev-layout.circle-tl-br {
+  background-image:
+    url('/透明圆.png'),
+    url('/透明圆.png'),
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
+  background-position: top left, bottom right, top left, bottom right;
+  background-size: 280px, 280px, 300px 300px, 300px 300px;
+  background-repeat: no-repeat;
+}
+
+.slidev-layout.circle-tr-bl {
+  background-image:
+    url('/透明圆.png'),
+    url('/透明圆.png'),
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%),
+    radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
+  background-position: top right, bottom left, top right, bottom left;
+  background-size: 280px, 280px, 300px 300px, 300px 300px;
+  background-repeat: no-repeat;
 }
 
 /* ======================================
@@ -90,16 +110,19 @@
     @apply text-6xl font-bold leading-tight;
     color: var(--theme-text-white);
   }
+
   /* 封面副标题 */
-  h1 + p {
+  h1+p {
     @apply -mt-2 mb-4 text-xl;
     color: var(--theme-text-gray);
   }
+
   /* 封面分割线 */
   .cover-divider {
     @apply w-full h-px mt-4 mb-8;
     background-color: var(--theme-divider-line);
   }
+
   /* 封面页脚左右文字 */
   .cover-footer {
     @apply w-full flex justify-between text-base;
@@ -110,12 +133,13 @@
 /* ======================================
   内容层级间距通用控制
 ====================================== */
-p + h2,
-ul + h2,
-table + h2 {
+p+h2,
+ul+h2,
+table+h2 {
   @apply mt-10 text-3xl font-bold;
   color: var(--theme-text-white);
 }
+
 h3 {
   @apply text-2xl font-semibold mb-3;
   color: var(--theme-text-white);
@@ -133,15 +157,18 @@ h3 {
   /* 禁止立体特效 */
   box-shadow: none;
 }
+
 /* 卡片左侧金色竖装饰条 搭配 .card-matte 使用 */
 .card-accent-left {
   @apply relative pl-5;
 }
+
 .card-accent-left::before {
   content: "";
   @apply absolute left-0 top-0 bottom-0 w-1;
   background-color: var(--theme-accent-line);
 }
+
 /* 底部通栏总结大卡片 */
 .card-full-width {
   @apply mt-6 p-4 w-full;
@@ -154,21 +181,25 @@ h3 {
 table {
   @apply w-full border-collapse;
 }
+
 /* 表头 */
 thead tr {
   background-color: var(--theme-card-header-bg);
 }
+
 th {
   @apply py-3 px-4 text-left font-bold;
   color: var(--theme-text-white);
   border-bottom: 1px solid var(--theme-divider-line);
 }
+
 /* 表格内容行 */
 td {
   @apply py-3 px-4;
   color: var(--theme-text-white);
   border-bottom: 1px solid var(--theme-divider-line);
 }
+
 /* 删除竖边框，仅保留水平分割线 */
 th,
 td {
@@ -183,9 +214,11 @@ td {
   color: var(--theme-text-yellow);
   @apply font-bold;
 }
+
 .text-desc {
   color: var(--theme-text-gray);
 }
+
 .text-total {
   color: var(--theme-text-red-total);
   @apply font-bold text-xl;

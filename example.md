@@ -13,6 +13,8 @@ theme: ./
 </div>
 
 ---
+layout: circletl-br
+---
 
 # What is Slidev?
 
@@ -31,6 +33,8 @@ Slidev is a slide maker and presentation tool designed for developers. It includ
 
 Read more about [Why Slidev?](https://sli.dev/guide/why)
 
+---
+layout: circletr-bl
 ---
 
 # 锦江学院体院汇报PPT完整风格总结
