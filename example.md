@@ -252,3 +252,28 @@ graph LR
 1
 1
 </ScrollView>
+
+---
+
+# Card 磨砂卡片
+
+<Card title="默认卡片（金黄装饰条）">
+内容放在这里，自动磨砂紫底 + 左侧金黄条
+</Card>
+
+<Card accent="#D4A720" title="浅色装饰条" class="mt-4">
+装饰条颜色可自定义
+</Card>
+
+<Card :show-accent="false" title="无装饰条卡片" size="full" class="mt-4">
+底部通栏大卡片，无装饰条
+</Card>
+
+<div class="grid grid-cols-2 gap-4 mt-4">
+  <Card title="双栏左" padding="4">
+    小内边距卡片
+  </Card>
+  <Card title="双栏右" padding="4">
+    等分并列布局
+  </Card>
+</div>
