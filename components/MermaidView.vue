@@ -6,38 +6,99 @@ const props = defineProps<{
 }>()
 
 const scale = ref(1)
+let tx = 0, ty = 0
+const dragging = ref(false)
+let dragStartX = 0, dragStartY = 0
+let dragTx = 0, dragTy = 0
+
+const wrapRef = ref<HTMLDivElement>()
 const contentRef = ref<HTMLDivElement>()
 
-function zoomIn() { scale.value = Math.min(scale.value + 0.25, 3); apply() }
-function zoomOut() { scale.value = Math.max(scale.value - 0.25, 0.25); apply() }
-function reset() { scale.value = 1; apply() }
 function apply() {
   if (!contentRef.value) return
-  contentRef.value.style.transform = `scale(${scale.value})`
+  contentRef.value.style.transform = `translate(${tx}px, ${ty}px) scale(${scale.value})`
+}
+
+function zoomIn() {
+  centerZoom(scale.value + 0.25)
+}
+
+function zoomOut() {
+  centerZoom(scale.value - 0.25)
+}
+
+function reset() {
+  scale.value = 1; tx = 0; ty = 0; apply()
+}
+
+function centerZoom(newScale: number) {
+  const wrap = wrapRef.value
+  if (!wrap) return
+  const cx = wrap.clientWidth / 2
+  const cy = wrap.clientHeight / 2
+  const mc = (cx - tx) / scale.value
+  const my = (cy - ty) / scale.value
+  newScale = Math.max(0.25, Math.min(3, newScale))
+  tx = cx - mc * newScale
+  ty = cy - my * newScale
+  scale.value = newScale
+  apply()
+}
+
+function onMouseDown(e: MouseEvent) {
+  if (e.button !== 0) return
+  dragging.value = true
+  dragStartX = e.clientX
+  dragStartY = e.clientY
+  dragTx = tx
+  dragTy = ty
+  window.addEventListener('mousemove', onMouseMove)
+  window.addEventListener('mouseup', onMouseUp)
+}
+
+function onMouseMove(e: MouseEvent) {
+  if (!dragging.value) return
+  tx = dragTx + (e.clientX - dragStartX)
+  ty = dragTy + (e.clientY - dragStartY)
+  apply()
+}
+
+function onMouseUp() {
+  dragging.value = false
+  window.removeEventListener('mousemove', onMouseMove)
+  window.removeEventListener('mouseup', onMouseUp)
 }
 
 function onWheel(e: WheelEvent) {
-  if (!e.ctrlKey && !e.metaKey) return
   e.preventDefault()
-  const d = e.deltaY > 0 ? -0.1 : 0.1
-  scale.value = Math.max(0.25, Math.min(3, scale.value + d))
+  const wrap = wrapRef.value
+  if (!wrap) return
+  const rect = wrap.getBoundingClientRect()
+  const mx = e.clientX - rect.left
+  const my = e.clientY - rect.top
+  // 鼠标在内容坐标系中的位置
+  const mc = (mx - tx) / scale.value
+  const myc = (my - ty) / scale.value
+  // 计算新缩放
+  const delta = e.deltaY > 0 ? -0.12 : 0.12
+  const ns = Math.max(0.25, Math.min(3, scale.value + delta))
+  // 调整 translate 使鼠标位置不动
+  tx = mx - mc * ns
+  ty = my - myc * ns
+  scale.value = ns
   apply()
 }
 </script>
 
 <template>
-  <div class="mermaid-wrap">
+  <div class="mermaid-wrap" :style="{ maxHeight: maxHeight || '400px' }">
     <div class="mermaid-toolbar">
       <span class="mermaid-zoom-label">{{ Math.round(scale * 100) }}%</span>
       <button class="mermaid-btn" title="缩小" @click="zoomOut">−</button>
       <button class="mermaid-btn" title="重置" @click="reset">⟲</button>
       <button class="mermaid-btn" title="放大" @click="zoomIn">+</button>
     </div>
-    <div
-      class="mermaid-scroll"
-      :style="{ maxHeight: maxHeight || '400px' }"
-      @wheel="onWheel"
-    >
+    <div ref="wrapRef" class="mermaid-view" :class="{ grabbing: dragging }" @wheel="onWheel" @mousedown="onMouseDown">
       <div ref="contentRef" class="mermaid-content">
         <slot />
       </div>
@@ -46,7 +107,10 @@ function onWheel(e: WheelEvent) {
 </template>
 
 <style scoped>
-.mermaid-wrap { @apply relative; }
+.mermaid-wrap {
+  @apply relative overflow-hidden rounded-lg border border-white/10;
+  background: rgba(0,0,0,.15);
+}
 .mermaid-toolbar {
   @apply flex items-center gap-1 absolute top-2 right-2 z-10 px-2 py-1 rounded-lg;
   background: rgba(0,0,0,.55);
@@ -61,9 +125,10 @@ function onWheel(e: WheelEvent) {
   background: rgba(255,255,255,.1);
 }
 .mermaid-btn:hover { background: rgba(255,255,255,.25); }
-.mermaid-scroll {
-  @apply overflow-auto rounded-lg border border-white/10;
-  background: rgba(0,0,0,.15);
+.mermaid-view {
+  @apply w-full overflow-hidden cursor-grab;
+  height: inherit;
 }
-.mermaid-content { @apply transition-transform duration-200; }
+.mermaid-view.grabbing { @apply cursor-grabbing; }
+.mermaid-content { transform-origin: 0 0; }
 </style>
