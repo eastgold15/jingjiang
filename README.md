@@ -1,6 +1,6 @@
 # slidev-theme-jingjiang
 
-[![NPM version](https://img.shields.io/npm/v/slidev-theme-jingjiang?color=3AB9D4&label=)](https://www.npmjs.com/package/slidev-theme-jingjiang)
+[![NPM version](https://img.shields.io/npm/v/@eastgold15/slidev-theme-jingjiang?color=3AB9D4&label=)](https://www.npmjs.com/package/@eastgold15/slidev-theme-jingjiang)
 
 深紫哑光磨砂政务风 Slidev 主题 —— 适配高校专业申报、述职汇报场景。
 

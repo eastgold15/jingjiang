@@ -1,11 +1,15 @@
 {
-  "name": "slidev-theme-jingjiang",
+  "name": "@eastgold15/slidev-theme-jingjiang",
   "version": "0.1.0",
   "type": "module",
   "keywords": [
     "slidev-theme",
     "slidev"
   ],
+  "author": "eastgold15",
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=20.12.0"
   },
