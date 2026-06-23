@@ -1,4 +1,4 @@
-# slidev-theme-jingjiang
+# @eastgold15/slidev-theme-jingjiang
 
 [![NPM version](https://img.shields.io/npm/v/@eastgold15/slidev-theme-jingjiang?color=3AB9D4&label=)](https://www.npmjs.com/package/@eastgold15/slidev-theme-jingjiang)
 
@@ -10,7 +10,7 @@
 
 ```yaml
 ---
-theme: jingjiang
+theme: @eastgold15/slidev-theme-jingjiang
 ---
 ```
 
