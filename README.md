@@ -10,7 +10,7 @@
 
 ```yaml
 ---
-theme: @eastgold15/slidev-theme-jingjiang
+theme: "@eastgold15/slidev-theme-jingjiang"
 ---
 ```
 
