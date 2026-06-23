@@ -82,8 +82,10 @@
     url('/透明圆.png'),
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%),
     radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
-  background-position: top left, bottom right, top left, bottom right;
-  background-size: 280px, 280px, 300px 300px, 300px 300px;
+  /* 左上圆向左、向上偏移溢出；右下圆向右、向下偏移溢出 */
+  background-position: -100px -100px, calc(100% + 100px) calc(100% + 100px), -100px -100px, calc(100% + 100px) calc(100% + 100px);
+  /* 左上大圆320px，右下小圆220px；渐变圆同步对应尺寸 */
+  background-size: 320px, 220px, 320px 320px, 220px 220px;
   background-repeat: no-repeat;
 }
 
@@ -93,8 +95,10 @@
     url('/透明圆.png'),
     radial-gradient(circle at top right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%),
     radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
-  background-position: top right, bottom left, top right, bottom left;
-  background-size: 280px, 280px, 300px 300px, 300px 300px;
+  /* 右上圆向右、向上溢出；左下圆向左、向下溢出 */
+  background-position: calc(100% + 100px) -100px, -100px calc(100% + 100px), calc(100% + 100px) -100px, -100px calc(100% + 100px);
+  /* 右上大圆320px，左下小圆220px；渐变圆同步对应尺寸 */
+  background-size: 320px, 220px, 320px 320px, 220px 220px;
   background-repeat: no-repeat;
 }
 
