@@ -166,3 +166,42 @@ class: "text-center"
 # Learn More
 
 [Documentation](https://sli.dev) / [GitHub Repo](https://github.com/slidevjs/slidev)
+
+---
+
+# 系统架构图
+
+<MermaidView
+  max-height="480px"
+  diagram="
+graph TB
+    subgraph &quot;📱 用户端&quot;
+    A[微信小程序]
+    end
+
+    subgraph &quot;🏪 商家端&quot;
+    B[微信小程序]
+    end
+
+    subgraph &quot;🚴 骑手端&quot;
+    C[微信小程序]
+    end
+
+    subgraph &quot;🖥️ 后台管理端&quot;
+    D[Web管理后台]
+    end
+
+    subgraph &quot;☁️ 服务器端&quot;
+    E[Node.js / NestJS]
+    F[(MySQL)]
+    G[Redis缓存]
+    end
+
+    A --> E
+    B --> E
+    C --> E
+    D --> E
+    E --> F
+    E --> G
+  "
+/>
