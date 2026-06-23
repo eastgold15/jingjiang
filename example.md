@@ -256,7 +256,7 @@ graph LR
 ---
 
 # Card 磨砂卡片
-
+<ScrollView max-height="400px">
 <Card title="默认卡片（金黄装饰条）">
 内容放在这里，自动磨砂紫底 + 左侧金黄条
 </Card>
@@ -277,3 +277,5 @@ graph LR
     等分并列布局
   </Card>
 </div>
+
+</ScrollView>
