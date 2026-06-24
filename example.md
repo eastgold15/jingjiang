@@ -333,7 +333,7 @@ class: "theme-project"
 
 在 frontmatter 加 `class: "theme-project"` 即可。
 
-<Card title="浅色主题效果" padding="4">
+<Card title="浅色主题效果" padding="4"  maxheight="450px">
 <div class="grid grid-cols-3 gap-4">
 <div class="section-accent">
 

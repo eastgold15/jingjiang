@@ -99,8 +99,12 @@ function onWheel(e: WheelEvent) {
 }
 .card-matte {
   background-color: #532B73;
-  filter: opacity(0.96);
+  filter: none;              /* 覆盖全局 layout.css 的 filter，避免与 overflow 冲突 */
   box-shadow: none;
+}
+/* 磨砂滤色移到内容层 */
+.card-matte .card-content {
+  filter: opacity(0.96);
 }
 .card-scrollable {
   @apply overflow-auto;
