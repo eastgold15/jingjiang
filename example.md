@@ -38,7 +38,7 @@ layout: circletr-bl
 
 整个主题唯一的容器组件。默认是磨砂底无装饰条，通过属性变成任意形态。
 
-<ScrollView max-height="460px">
+<Card maxHeight="460px" padding="4">
 
 **❶ 默认：磨砂底，无装饰条（旧 highlight-box）**
 <Card>
@@ -78,7 +78,7 @@ layout: circletr-bl
 <Card title="外层" class="mt-4">
 <Card :matte="false" accent="#F9D240">内层无背景分区</Card>
 </Card>
-</ScrollView>
+</Card>
 
 **使用注意：** Card 标签上下必须空一行（已用 CSS 压平间距）；不要嵌套两个磨砂 Card，内层用 `:matte="false"`
 
@@ -206,7 +206,7 @@ layout: circletl-br
 
 原子组件已全局注册，幻灯片中直接使用标签，无需 import。
 
-<ScrollView max-height="460px">
+<Card maxHeight="460px" padding="4">
 
 **AtomBox — 容器盒子**
 <AtomBox class="p-4" style="background:var(--bg-card)">
@@ -267,7 +267,7 @@ layout: circletl-br
 </AtomFlex>
 </AtomBox>
 
-</ScrollView>
+</Card>
 
 不传 `accent` 就是磨砂底无装饰条，天然适合结论强调。
 
@@ -384,7 +384,7 @@ class: "theme-project"
 <!-- <tr><td>目录列表</td><td>`&lt;Outline&gt;`</td><td>自带序号和标签样式</td></tr> -->
 <tr><td>时间阶段</td><td>`&lt;Timeline&gt;`</td><td>横向阶段条，适合排期</td></tr>
 <tr><td>流程图/图表</td><td>`&lt;MermaidView&gt;`</td><td>可缩放，拖拽平移</td></tr>
-<tr><td>超长内容</td><td>`&lt;ScrollView&gt;`</td><td>隐藏滚动条，触控板友好</td></tr>
+<tr><td>超长内容</td><td>`&lt;Card maxHeight&gt;`</td><td>隐藏滚动条，触控板友好</td></tr>
 </tbody>
 </table>
 
