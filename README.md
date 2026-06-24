@@ -157,12 +157,12 @@ graph TB
 </AtomFlex>
 ```
 
-### Toc
+### Outline
 
 目录导航组件，展示演示文稿的章节列表。
 
 ```markdown
-<Toc :items="[
+<Outline :items="[
   {icon: '🎯', number: '①', title: '项目概述', tag: '🌟 所有人'},
   {icon: '💰', number: '②', title: '成本估算', tag: '🌟 所有人'},
 ]" />

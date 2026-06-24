@@ -166,12 +166,12 @@ graph TB
 
 ---
 
-### 3.4 Toc — 目录导航
+### 3.4 Outline — 目录导航
 
 结构化展示演示文稿的章节/内容列表。适合在 intro 页或第一页正文做导航。
 
 ```markdown
-<Toc :items="[
+<Outline :items="[
   {icon: '🎯', number: '①', title: '项目概述', desc: '要做什么', tag: '🌟 所有人'},
   {icon: '📱', number: '②', title: '功能模块', desc: '四个端', tag: '🌟 所有人'},
   {icon: '💰', number: '③', title: '成本估算', desc: '详细费用', tag: '🟡 老板重点'},
@@ -544,7 +544,7 @@ layout: cover
 | 结论/强调 | `<Card>` | 默认就是磨砂底无装饰条，正好做结论框 |
 | 数字/指标展示 | `.data-block` | 纯文字，无需容器 |
 | 自由组合布局 | `<AtomBox>` + `<AtomFlex>` | 原子组件自由拼接，零 UI 库 |
-| 目录列表 | `<Toc>` | 自带序号和标签样式 |
+| 目录列表 | `<Outline>` | 自带序号和标签样式 |
 | 时间阶段 | `<Timeline>` | 横向阶段条，适合项目排期 |
 | 流程图/图表 | `<MermaidView>` | 可缩放，拖拽平移 |
 | 超长内容 | `<ScrollView>` | 隐藏滚动条，触控板友好 |

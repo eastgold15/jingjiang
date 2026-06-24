@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface TocItem {
+interface OutlineItem {
   /** 序号，如 "①" */
   number: string
   /** 图标 emoji */
@@ -13,45 +13,45 @@ interface TocItem {
 }
 
 defineProps<{
-  items: TocItem[]
+  items: OutlineItem[]
 }>()
 </script>
 
 <template>
-  <div class="toc w-full">
-    <div v-for="item in items" :key="item.number" class="toc-row">
-      <span class="toc-number">{{ item.icon }}{{ item.number }}</span>
-      <div class="toc-body">
-        <span class="toc-title">{{ item.title }}</span>
-        <span v-if="item.desc" class="toc-desc"> — {{ item.desc }}</span>
+  <div class="outline w-full">
+    <div v-for="item in items" :key="item.number" class="outline-row">
+      <span class="outline-number">{{ item.icon }}{{ item.number }}</span>
+      <div class="outline-body">
+        <span class="outline-title">{{ item.title }}</span>
+        <span v-if="item.desc" class="outline-desc"> — {{ item.desc }}</span>
       </div>
-      <span v-if="item.tag" class="toc-tag">{{ item.tag }}</span>
+      <span v-if="item.tag" class="outline-tag">{{ item.tag }}</span>
     </div>
   </div>
 </template>
 
 <style scoped>
-.toc-row {
+.outline-row {
   @apply flex items-center gap-4 py-3;
   border-bottom: 1px solid var(--theme-divider-line);
 }
-.toc-row:last-child {
+.outline-row:last-child {
   border-bottom: none;
 }
-.toc-number {
+.outline-number {
   @apply text-xl whitespace-nowrap;
 }
-.toc-body {
+.outline-body {
   @apply flex-1 min-w-0;
 }
-.toc-title {
+.outline-title {
   @apply font-semibold;
   color: var(--theme-text-white);
 }
-.toc-desc {
+.outline-desc {
   color: var(--theme-text-gray);
 }
-.toc-tag {
+.outline-tag {
   @apply px-3 py-1 text-xs rounded whitespace-nowrap;
   background-color: var(--theme-card-bg);
   color: var(--theme-text-gray);
