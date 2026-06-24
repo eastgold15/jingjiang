@@ -70,4 +70,15 @@ const cardClass = computed(() => [
   color: #FFFFFF;
   border-bottom: 1px solid #9D78C2;
 }
+
+/* 消除 Markdown 空行产生的 p 标签间距 */
+.card-matte :deep(p) {
+  margin: 0.15em 0;
+}
+.card-matte :deep(p:first-child) {
+  margin-top: 0;
+}
+.card-matte :deep(p:last-child) {
+  margin-bottom: 0;
+}
 </style>

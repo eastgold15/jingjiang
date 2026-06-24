@@ -275,6 +275,20 @@ td {
   filter: opacity(0.96);
 }
 
+/* 消除 Markdown 空行产生的 p 标签间距（适用于所有容器类） */
+.section-accent p,
+.highlight-box p {
+  margin: 0.15em 0;
+}
+.section-accent p:first-child,
+.highlight-box p:first-child {
+  margin-top: 0;
+}
+.section-accent p:last-child,
+.highlight-box p:last-child {
+  margin-bottom: 0;
+}
+
 /* ======================================
   数据展示工具类（纯文字，无容器背景）
 ====================================== */

@@ -109,7 +109,9 @@ layout: circletl-br
 
 ```markdown
 <div class="section-accent">
+
 **标题** 一段说明文字
+
 </div>
 ```
 
@@ -118,14 +120,17 @@ layout: circletl-br
 <Card title="" :show-accent="false" padding="4">
 <div class="grid grid-cols-3 gap-4">
 <div class="section-accent">
+
 **📊 信息过载**
 全国 3000+ 所高校<br>700+ 专业<br>普通家庭根本理不清
 </div>
 <div class="section-accent">
+
 **🎲 盲目决策**
 67% 的学生凭感觉<br>44% 后悔所选专业<br>信息不对称
 </div>
 <div class="section-accent">
+
 **⏰ 时间压力**
 出分到填报仅 3-7 天<br>焦虑之下容易出错<br>一错影响一生
 </div>
@@ -180,12 +185,16 @@ layout: circletl-br
 
 <Card title="" :show-accent="false" padding="4">
 <div class="highlight-box">
+
 **💡 核心结论：** 基础功能免费引流 → 会员/咨询变现 → B端扩大覆盖 → 数据积累形成壁垒
+
 </div>
 </Card>
 
 <div class="highlight-box mt-4">
+
 **🔑 差异化：** 纯工具 → AI + 人结合。基础数据免费建立信任，AI推荐提高效率，专家咨询提供深度服务。
+
 </div>
 
 ---
@@ -239,14 +248,17 @@ class: "theme-project"
 <Card title="浅色主题效果" padding="4">
 <div class="grid grid-cols-3 gap-4">
 <div class="section-accent">
+
 **📊 数据展示**
 表格清晰，对比度高
 </div>
 <div class="section-accent">
+
 **🎨 视觉清爽**
 浅灰白底，正式不暗沉
 </div>
 <div class="section-accent">
+
 **📈 商业场景**
 适合方案评审、商业计划
 </div>
@@ -254,11 +266,13 @@ class: "theme-project"
 </Card>
 
 <Card title="数据表格" padding="4" class="mt-4">
+
 | 项目 | 金额 | 说明 |
 |------|------|------|
 | 开发费用 | <span class="text-data">120,000</span> | 四端开发 |
 | 服务器首月 | <span class="text-data">3,000</span> | 云服务器 |
 | **合计** | <span class="text-total">123,000 元</span> | |
+
 </Card>
 
 ---
