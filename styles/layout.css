@@ -66,10 +66,14 @@
   --accent: var(--theme-project-accent);
 }
 
-/* 浅色主题代码块背景修正（Shiki dark 模式黑底不搭） */
+/* 浅色主题代码块修正（Shiki dark 模式的浅色文字压暗，适配浅背景） */
 .theme-project .shiki,
 .theme-project pre.shiki {
   background-color: #eef0f4 !important;
+}
+
+.theme-project .shiki code {
+  filter: brightness(0.35);
 }
 
 /* ======================================
