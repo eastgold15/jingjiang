@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/@eastgold15/slidev-theme-jingjiang?color=3AB9D4&label=)](https://www.npmjs.com/package/@eastgold15/slidev-theme-jingjiang)
 
-深紫哑光磨砂政务风 Slidev 主题 —— 适配高校专业申报、述职汇报场景。
+深紫哑光磨砂政务风 Slidev 主题 —— 适配述职汇报、方案评审、项目分析、学术答辩等正式汇报场景。
 
 ## 安装
 
@@ -22,14 +22,14 @@ theme: "@eastgold15/slidev-theme-jingjiang"
 |--------|------|
 | `cover` | 封面页，居中对称大标题 + 副标题 + 分割线 + 页脚 |
 | `intro` | intro 页，同封面风格 |
-| `circle-tl-br` | 左上 + 右下双透明圆装饰背景 |
-| `circle-tr-bl` | 右上 + 左下双透明圆装饰背景 |
+| `circletl-br` | 左上 + 右下双透明圆装饰背景 |
+| `circletr-bl` | 右上 + 左下双透明圆装饰背景 |
 
 使用方式：
 
 ```yaml
 ---
-layout: circle-tl-br
+layout: circletl-br
 ---
 ```
 
@@ -127,16 +127,89 @@ graph TB
 </div>
 ```
 
-## 开发
+**使用注意：**
+- Card 标签**上下必须空一行**，否则 Markdown 不会正确渲染
+- **不要嵌套 Card**，内层用 `.section-accent` 替代
+- 纯数字展示用 `.data-block` 替代 Card，避免视觉疲劳
 
-```bash
-npm install
-npm run dev      # 预览 example.md
-npm run build    # 构建
-npm run export   # 导出 PDF
+---
+
+### Toc
+
+目录导航组件，展示演示文稿的章节列表。
+
+```markdown
+<Toc :items="[
+  {icon: '🎯', number: '①', title: '项目概述', tag: '🌟 所有人'},
+  {icon: '💰', number: '②', title: '成本估算', tag: '🌟 所有人'},
+]" />
 ```
 
-## 配色
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `items[].icon` | string | 图标 emoji |
+| `items[].number` | string | 序号（① ② ③） |
+| `items[].title` | string | 章节标题 |
+| `items[].desc` | string | 补充说明 |
+| `items[].tag` | string | 受众标签 |
+
+---
+
+### Timeline
+
+横向阶段线组件，适合展示项目排期、开发时间线。
+
+```markdown
+<Timeline :steps="[
+  {icon: '📄', label: '需求分析', period: '第1-2周', accent: '#F9D240'},
+  {icon: '☁️', label: '后端开发', period: '第3-6周', accent: '#7EC8E3'},
+  {icon: '📱', label: '前端开发', period: '第4-8周', accent: '#6BCB9C'},
+  {icon: '🚀', label: '上线发布', period: '第10周', accent: '#C792EA'},
+]" />
+```
+
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `steps[].icon` | string | 图标 emoji |
+| `steps[].label` | string | 阶段名称 |
+| `steps[].period` | string | 时间周期 |
+| `steps[].desc` | string | 补充描述 |
+| `steps[].accent` | string | 顶部色条颜色 |
+
+---
+
+## 样式工具类
+
+### 轻量容器
+
+| 类名 | 作用 |
+|------|------|
+| `.section-accent` | 左侧色条分区，无背景色，适合纯文字段落 |
+| `.highlight-box` | 结论强调框，有磨砂底但无装饰条 |
+| `.data-block` | 数据展示容器，纯文字无背景 |
+| `.data-value` | 数据值（金黄大号加粗） |
+| `.data-label` | 数据标签（浅灰小字） |
+
+---
+
+## 主题切换
+
+在 slide 的 frontmatter 中添加 `class` 切换配色：
+
+| class | 场景 |
+|-------|------|
+| —（默认） | 深紫哑光政务风 |
+| `theme-light` | 浅紫清爽，对外宣讲/答辩 |
+| `theme-project` | 浅灰白底，方案评审/商业计划 |
+
+```yaml
+---
+layout: circletl-br
+class: "theme-project"
+---
+```
+
+## 配色（默认主题）
 
 | 用途 | 色值 | 说明 |
 |------|------|------|
@@ -147,6 +220,15 @@ npm run export   # 导出 PDF
 | 高亮数据 | `#F9D240` | 金黄 |
 | 辅助文字 | `#D1C4E0` | 浅灰紫 |
 | 总计/强调 | `#9E2B42` | 暗酒红 |
+
+## 开发
+
+```bash
+npm install
+npm run dev      # 预览 example.md
+npm run build    # 构建
+npm run export   # 导出 PDF
+```
 
 ---
 
