@@ -363,41 +363,6 @@ class: "theme-project"
 
 </Card>
 
----
-
-# ScrollView 组件
-
-无滚动条容器，滚轮翻页，Shift+滚轮左右平移。
-
-<ScrollView max-height="360px">
-
-## 长内容示例
-
-这一段只是为了展示 ScrollView 的滚动效果。当内容超过容器高度时，滚轮自动垂直翻页，而且没有滚动条，不影响触控板手势。
-
-### 继续往下翻
-
-下面还有更多内容，你会看到 ScrollView 平滑滚动。
-
-**数据点 1：** Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-**数据点 2：** Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-**数据点 3：** Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-
-翻到底了！Shift+滚轮可以左右平移。
-</ScrollView>
 
 ---
 

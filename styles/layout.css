@@ -96,6 +96,11 @@
   --theme-text-red-total: var(--theme-project-text-red-total);
   --theme-accent-line: var(--theme-project-accent-line);
 }
+/* 浅色主题下代码块背景修正（Shiki dark 模式黑底不搭） */
+.theme-project .shiki,
+.theme-project pre.shiki {
+  background-color: #eef0f4 !important;
+}
 
 /* ======================================
   圆背景布局：两张透明圆装饰
