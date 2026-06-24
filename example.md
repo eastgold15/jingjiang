@@ -372,7 +372,10 @@ class: "theme-project"
 
 
 <table>
+<thead>
 <tr><th>要放什么</th><th>用什么</th><th>理由</th></tr>
+</thead>
+<tbody>
 <tr><td>标题 + 多行内容 + 表格</td><td>`&lt;Card&gt;`</td><td>需要磨砂背景承托</td></tr>
 <tr><td>纯文字段落</td><td>`&lt;Card :matte="false" accent="色值"&gt;`</td><td>无背景，仅色条</td></tr>
 <tr><td>自由组合布局</td><td>`&lt;AtomBox&gt;` + `&lt;AtomFlex&gt;`</td><td>原子组件自由拼接</td></tr>
@@ -382,6 +385,7 @@ class: "theme-project"
 <tr><td>时间阶段</td><td>`&lt;Timeline&gt;`</td><td>横向阶段条，适合排期</td></tr>
 <tr><td>流程图/图表</td><td>`&lt;MermaidView&gt;`</td><td>可缩放，拖拽平移</td></tr>
 <tr><td>超长内容</td><td>`&lt;ScrollView&gt;`</td><td>隐藏滚动条，触控板友好</td></tr>
+</tbody>
 </table>
 
 </Card>
