@@ -19,16 +19,16 @@ layout: circletl-br
 # Toc 目录导航组件
 
 使用 `<Toc>` 展示演示文稿章节列表，自动带序号、图标、标签：
-<!-- 
+
 <Toc :items="[
   {icon: '🎯', number: '①', title: '组件概览', desc: '所有组件一览', tag: '🌟 所有人'},
   {icon: '📦', number: '②', title: 'Card 卡片', desc: '磨砂卡片用法', tag: '🌟 所有人'},
   {icon: '📋', number: '③', title: 'Toc 目录', desc: '就是本页', tag: '🌟 所有人'},
-  {icon: '⏱', number: '④', title: 'Timeline 时间线', desc: '阶段展示', tag: '🌟 所有人'},
+  {icon: '', number: '④', title: 'Timeline 时间线', desc: '阶段展示', tag: '🌟 所有人'},
   {icon: '🧩', number: '⑤', title: '原子组件', desc: 'AtomBox / Flex / Text / Badge / Btn', tag: '🌟 所有人'},
   {icon: '🎨', number: '⑥', title: '样式工具类', desc: 'Card 四方向 / DataBlock', tag: '🌟 所有人'},
   {icon: '🔄', number: '⑦', title: '主题切换', desc: 'theme-project 浅色主题', tag: '🟡 技术参考'},
-]" /> -->
+]" />
 
 ---
 layout: circletr-bl

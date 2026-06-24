@@ -23,25 +23,55 @@ const props = withDefaults(defineProps<{
   matte: true,
 })
 
-const cardClass = computed(() => [
+const wrapClass = computed(() => [
   props.matte ? 'card-matte' : '',
   props.mb ? `mb-${props.mb}` : '',
-  `p-${props.padding}`,
 ].filter(Boolean).join(' '))
+
+const contentClass = computed(() => `p-${props.padding}`)
+
+// 判断是否是左右竖向线条
+const isVerticalBar = computed(() => ['left', 'right'].includes(props.accentSide!))
 </script>
 
 <template>
-  <div :class="[cardClass, 'card-base', $attrs.class]" :style="{ '--card-accent': accent } as any" v-bind="$attrs">
-    <div v-if="accent" class="card-accent" :class="`card-accent-${accentSide}`" />
-    <div v-if="title" class="card-title">{{ title }}</div>
-    <slot />
+  <!-- 外层外壳：布局约束层 -->
+  <div
+    :class="[wrapClass, 'card-wrap', $attrs.class]"
+    v-bind="$attrs"
+  >
+    <!-- 内层内容区 -->
+    <div
+      :class="['card-content', contentClass]"
+      :style="{ '--card-accent': accent } as any"
+    >
+      <!-- 顶部横向装饰条 -->
+      <div v-if="accent && accentSide === 'top'" class="card-bar card-bar-top" />
+
+      <!-- 左右竖向条 + 内容flex容器 -->
+      <div v-if="accent && isVerticalBar" class="card-flex-row" :class="`flex-${accentSide}`">
+        <div class="card-bar card-bar-vertical" />
+        <div class="card-inner-text">
+          <div v-if="title" class="card-title">{{ title }}</div>
+          <slot />
+        </div>
+      </div>
+
+      <!-- 无竖向条 / 底部条普通内容 -->
+      <div v-else>
+        <div v-if="title" class="card-title">{{ title }}</div>
+        <slot />
+      </div>
+
+      <!-- 底部横向装饰条 -->
+      <div v-if="accent && accentSide === 'bottom'" class="card-bar card-bar-bottom" />
+    </div>
   </div>
 </template>
 
 <style scoped>
-.card-base {
+.card-wrap {
   @apply w-full;
-  position: relative;
 }
 .card-matte {
   background-color: #532B73;
@@ -49,51 +79,58 @@ const cardClass = computed(() => [
   box-shadow: none;
 }
 
-/* 装饰条 */
-.card-accent {
-  position: absolute;
-  background-color: var(--card-accent, #F9D240);
-}
-.card-accent-left {
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-}
-.card-accent-right {
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-}
-.card-accent-top {
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-}
-.card-accent-bottom {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
+.card-content {
+  width: 100%;
 }
 
-/* 标题（带底部分割线） */
+/* flex横向布局，竖向线条专用 */
+.card-flex-row {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+}
+.flex-right {
+  flex-direction: row-reverse;
+}
+.card-inner-text {
+  flex: 1;
+}
+
+/* 装饰条基础样式 */
+.card-bar {
+  background-color: var(--card-accent, #F9D240);
+}
+.card-bar-vertical {
+  width: 4px;
+  flex-shrink: 0; /* 固定4px宽度，不压缩 */
+}
+.card-bar-top,
+.card-bar-bottom {
+  height: 4px;
+  width: 100%;
+}
+.card-bar-top {
+  margin-bottom: 12px;
+}
+.card-bar-bottom {
+  margin-top: 12px;
+}
+
+/* 标题 */
 .card-title {
   @apply mb-3 pb-3 text-lg font-bold;
   color: #FFFFFF;
   border-bottom: 1px solid #9D78C2;
 }
 
-/* 消除 Markdown 空行产生的 p 标签间距 */
-.card-base :deep(p) {
+/* 文本段落重置 */
+.card-content :deep(p) {
   margin: 0.15em 0;
 }
-.card-base :deep(p:first-child) {
+.card-content :deep(p:first-child) {
   margin-top: 0;
 }
-.card-base :deep(p:last-child) {
+.card-content :deep(p:last-child) {
   margin-bottom: 0;
 }
 </style>
