@@ -64,14 +64,11 @@
   --text-muted: var(--theme-project-muted);
   --text-danger: var(--theme-project-danger);
   --accent: var(--theme-project-accent);
+  /* 代码块背景 & 行内代码背景 — 浅灰替代默认黑底 */
+  --slidev-code-background: #eef0f4;
 }
 
-/* 浅色主题代码块修正（Shiki dark 模式的浅色文字压暗，适配浅背景） */
-.theme-project .shiki,
-.theme-project pre.shiki {
-  background-color: #eef0f4 !important;
-}
-
+/* 代码文字压暗（Shiki dark 模式的浅色 inline 颜色在浅底上看不清） */
 .theme-project .shiki code {
   filter: brightness(0.35);
 }
