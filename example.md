@@ -25,7 +25,7 @@ layout: circletl-br
   {icon: '📦', number: '②', title: 'Card 卡片', desc: '磨砂卡片用法', tag: '🌟 所有人'},
   {icon: '📋', number: '③', title: 'Toc 目录', desc: '就是本页', tag: '🌟 所有人'},
   {icon: '⏱', number: '④', title: 'Timeline 时间线', desc: '阶段展示', tag: '🌟 所有人'},
-  {icon: '🎨', number: '⑤', title: '样式工具类', desc: 'Section / DataBlock / HighlightBox', tag: '🌟 所有人'},
+  {icon: '🎨', number: '⑤', title: '样式工具类', desc: 'Card 四方向装饰条 / DataBlock', tag: '🌟 所有人'},
   {icon: '🔄', number: '⑥', title: '主题切换', desc: 'theme-project 浅色主题', tag: '🟡 技术参考'},
 ]" />
 
@@ -33,42 +33,53 @@ layout: circletl-br
 layout: circletr-bl
 ---
 
-# Card 磨砂卡片
+# Card 统一容器
 
-内容的基本承载容器，直角磨砂质感。
+整个主题唯一的容器组件。默认是磨砂底无装饰条，通过属性变成任意形态。
 
-<ScrollView max-height="380px">
-<Card title="默认卡片（金黄装饰条）">
-内容放在这里，自动磨砂紫底 + 左侧金黄条
+<ScrollView max-height="460px">
+
+**❶ 默认：磨砂底，无装饰条（旧 highlight-box）**
+<Card>
+结论/强调框，磨砂紫底，干净无装饰
 </Card>
 
-<Card accent="#D4A720" title="浅色装饰条" class="mt-4">
-装饰条颜色可自定义
+**❷ 磨砂底 + 左侧装饰条（经典 Card）**
+<Card accent="#F9D240" title="经典卡片" class="mt-4">
+左侧金黄装饰条 + 磨砂紫底
 </Card>
 
-<Card :show-accent="false" title="无装饰条卡片" size="full" class="mt-4">
-底部通栏大卡片，无装饰条
+**❸ 磨砂底 + 顶部装饰条**
+<Card accent="#F9D240" accent-side="top" title="顶部色条" class="mt-4">
+装饰条可以在上/下/左/右四个方向
 </Card>
 
+**❹ 无背景 + 左侧装饰条（旧 section-accent）**
+<Card :matte="false" accent="#F9D240" class="mt-4">
+无磨砂背景，只有左侧色条，适合纯文字分区
+</Card>
+
+**❺ 双栏并列**
 <div class="grid grid-cols-2 gap-4 mt-4">
-  <Card title="双栏左" padding="4">
-    小内边距卡片
-  </Card>
-  <Card title="双栏右" padding="4">
-    等分并列布局
-  </Card>
+<Card title="左栏" padding="4">内容</Card>
+<Card title="右栏" padding="4">内容</Card>
 </div>
 
-<Card title="表格内嵌" class="mt-4">
+**❻ 内嵌表格**
+<Card title="数据总览" class="mt-4">
 | 项目 | 数值 | 备注 |
 |------|------|------|
 | 项目A | <span class="text-data">320</span> | 正常 |
-| 项目B | <span class="text-data">180</span> | <span class="text-desc">暂停中</span> |
 | **合计** | <span class="text-total">500</span> | |
+</Card>
+
+**❼ 无背景 Card 做内层（替代旧版嵌套）**
+<Card title="外层" class="mt-4">
+<Card :matte="false" accent="#F9D240">内层无背景分区</Card>
 </Card>
 </ScrollView>
 
-**使用注意：** Card 标签上下必须空一行；不要嵌套 Card，内层用 `.section-accent`
+**使用注意：** Card 标签上下必须空一行（已用 CSS 压平间距）；不要嵌套两个磨砂 Card，内层用 `:matte="false"`
 
 ---
 
@@ -101,39 +112,58 @@ layout: circletr-bl
 layout: circletl-br
 ---
 
-# 样式工具类：Section
+# Card 四种装饰条方向
 
-`section-accent` 是轻量分区——只有左侧色条，无背景色，适合纯文字段落。
+`accent-side` 控制装饰条在上/下/左/右。
 
-**使用场景：替代嵌套 Card**
+<Card title="四方向对比" padding="4">
+<div class="grid grid-cols-2 gap-4">
+<Card accent="#F9D240" accent-side="left" padding="4">
+**← 左侧**（默认）<br>经典竖向装饰条
+</Card>
+<Card accent="#7EC8E3" accent-side="right" padding="4">
+**→ 右侧**<br>色条在右边
+</Card>
+<Card accent="#6BCB9C" accent-side="top" padding="4">
+**↑ 顶部**<br>横线在顶端
+</Card>
+<Card accent="#E57373" accent-side="bottom" padding="4">
+**↓ 底部**<br>横线在底端
+</Card>
+</div>
+</Card>
+
+---
+
+# Card 无背景模式（替代旧 section-accent）
+
+`:matte="false"` 去掉磨砂背景，只剩装饰条。适合纯文字分区，视觉更轻。
 
 ```markdown
-<div class="section-accent">
-
+<Card :matte="false" accent="#F9D240">
 **标题** 一段说明文字
-
-</div>
+</Card>
 ```
 
 效果（三栏并排）：
 
-<Card title="" :show-accent="false" padding="4">
+<Card padding="4">
 <div class="grid grid-cols-3 gap-4">
-<div class="section-accent">
+<Card :matte="false" accent="#F9D240">
 
 **📊 信息过载**
 全国 3000+ 所高校<br>700+ 专业<br>普通家庭根本理不清
-</div>
-<div class="section-accent">
+</Card>
+<Card :matte="false" accent="#7EC8E3">
 
 **🎲 盲目决策**
 67% 的学生凭感觉<br>44% 后悔所选专业<br>信息不对称
-</div>
-<div class="section-accent">
+</Card>
+<Card :matte="false" accent="#6BCB9C">
 
 **⏰ 时间压力**
-出分到填报仅 3-7 天<br>焦虑之下容易出错<br>一错影响一生
-</div>
+出分到填报仅 3-7 天<br>焦虑之下容易出错
+</Card>
 </div>
 </Card>
 
@@ -171,31 +201,23 @@ layout: circletl-br
 
 ---
 
-# 样式工具类：HighlightBox
+# Card 默认模式（结论框）
 
-结论强调框，有磨砂底但无装饰条。
+不传 `accent` 就是磨砂底无装饰条，天然适合结论强调。
 
 ```markdown
-<div class="highlight-box">
+<Card>
 **💡 核心结论：** 一句话总结
-</div>
+</Card>
 ```
 
-效果：
-
-<Card title="" :show-accent="false" padding="4">
-<div class="highlight-box">
-
+<Card>
 **💡 核心结论：** 基础功能免费引流 → 会员/咨询变现 → B端扩大覆盖 → 数据积累形成壁垒
-
-</div>
 </Card>
 
-<div class="highlight-box mt-4">
-
+<Card class="mt-4">
 **🔑 差异化：** 纯工具 → AI + 人结合。基础数据免费建立信任，AI推荐提高效率，专家咨询提供深度服务。
-
-</div>
+</Card>
 
 ---
 
@@ -319,9 +341,9 @@ class: "theme-project"
 <table>
 <tr><th>要放什么</th><th>用什么</th><th>理由</th></tr>
 <tr><td>标题 + 多行内容 + 表格</td><td>`&lt;Card&gt;`</td><td>需要磨砂背景承托</td></tr>
-<tr><td>纯文字段落</td><td>`.section-accent`</td><td>轻量，不增加视觉重量</td></tr>
+<tr><td>纯文字段落</td><td>`&lt;Card :matte="false" accent="色值"&gt;`</td><td>无背景，仅色条</td></tr>
 <tr><td>数字/指标展示</td><td>`.data-block`</td><td>无需卡片，纯文字干净</td></tr>
-<tr><td>结论/强调</td><td>`.highlight-box`</td><td>有背景区分但不花哨</td></tr>
+<tr><td>结论/强调</td><td>`&lt;Card&gt;`</td><td>默认就是磨砂底无装饰条</td></tr>
 <tr><td>目录列表</td><td>`&lt;Toc&gt;`</td><td>自带序号和标签样式</td></tr>
 <tr><td>时间阶段</td><td>`&lt;Timeline&gt;`</td><td>横向阶段条，适合排期</td></tr>
 <tr><td>流程图/图表</td><td>`&lt;MermaidView&gt;`</td><td>可缩放，拖拽平移</td></tr>

@@ -92,33 +92,30 @@ graph TB
 
 ### Card
 
-磨砂质感卡片容器，支持左侧装饰条、标题、多尺寸。
+整个主题唯一的容器组件。默认磨砂底无装饰条，通过属性变成任意形态。
 
 ```markdown
-<Card title="标题" accent="#F9D240">
-卡片内容
-</Card>
+<!-- 默认：磨砂底无装饰条（结论框） -->
+<Card>内容</Card>
+
+<!-- 左侧金色装饰条 -->
+<Card accent="#F9D240">内容</Card>
+
+<!-- 顶部装饰条 -->
+<Card accent="#F9D240" accent-side="top">内容</Card>
+
+<!-- 无背景，仅左侧色条 -->
+<Card :matte="false" accent="#F9D240">内容</Card>
 ```
 
 | 属性 | 类型 | 默认 | 说明 |
 |------|------|------|------|
-| `accent` | string | `#F9D240` | 左侧装饰条颜色 |
-| `show-accent` | boolean | `true` | 是否显示装饰条 |
+| `accent` | string | — | 装饰条颜色，不传则不显示 |
+| `accent-side` | `left`/`right`/`top`/`bottom` | `left` | 装饰条方向 |
+| `matte` | boolean | `true` | 是否显示磨砂背景 |
 | `padding` | number | `6` | 内边距（UnoCSS p-X） |
-| `size` | `normal \| full \| sm` | `normal` | 卡片尺寸 |
-| `title` | string | — | 卡片标题（带底部分割线） |
+| `title` | string | — | 标题（带底部分割线） |
 | `mb` | number | `0` | 底部外边距 |
-
-示例：
-
-```markdown
-<Card title="默认卡片" accent="#F9D240" padding="6">
-  标准磨砂卡片
-</Card>
-
-<Card :show-accent="false" size="full">
-  底部通栏大卡片，无装饰条
-</Card>
 
 <!-- 双栏并列 -->
 <div class="grid grid-cols-2 gap-4">
@@ -180,15 +177,15 @@ graph TB
 
 ## 样式工具类
 
-### 轻量容器
+### 数据展示
 
 | 类名 | 作用 |
 |------|------|
-| `.section-accent` | 左侧色条分区，无背景色，适合纯文字段落 |
-| `.highlight-box` | 结论强调框，有磨砂底但无装饰条 |
-| `.data-block` | 数据展示容器，纯文字无背景 |
+| `.data-block` | 数据指标容器（纯文字无背景） |
 | `.data-value` | 数据值（金黄大号加粗） |
 | `.data-label` | 数据标签（浅灰小字） |
+
+> Card 已统一支持四种容器形态（磨砂底/无背景/装饰条四方向），不再需要 `.section-accent` 和 `.highlight-box`。旧类名仍兼容可用。
 
 ---
 

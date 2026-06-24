@@ -120,42 +120,49 @@ graph TB
 
 ---
 
-### 3.3 Card — 磨砂质感卡片
+### 3.3 Card — 磨砂容器（通用）
 
-内容的基本承载容器，直角矩形、不透光哑光磨砂质感、无阴影无渐变。
+整个主题唯一的容器组件。默认是**磨砂底无装饰条**的盒子，通过属性控制装饰条方向、颜色、背景开关。不传 `accent` 就无装饰条，传了 `accent` 才有。
 
 ```markdown
-<Card title="标题" accent="#F9D240">
-卡片内容
+<!-- 默认：磨砂底，无装饰条 -->
+<Card>
+内容
+</Card>
+
+<!-- 左侧金色装饰条（经典 Card） -->
+<Card accent="#F9D240">
+内容
+</Card>
+
+<!-- 顶部装饰条 -->
+<Card accent="#F9D240" accent-side="top">
+内容
+</Card>
+
+<!-- 无背景，仅左侧色条（替代旧版 section-accent） -->
+<Card :matte="false" accent="#F9D240">
+内容
 </Card>
 ```
 
 | 属性 | 类型 | 默认 | 说明 |
 |------|------|------|------|
-| `accent` | string | `#F9D240` | 左侧装饰条颜色 |
-| `show-accent` | boolean | `true` | 是否显示装饰条 |
+| `accent` | string | — | 装饰条颜色，不传则不显示装饰条 |
+| `accent-side` | `left` / `right` / `top` / `bottom` | `left` | 装饰条方向 |
+| `matte` | boolean | `true` | 是否显示磨砂背景 |
 | `padding` | number | `6` | 内边距（UnoCSS p-X） |
-| `size` | `normal` / `full` / `sm` | `normal` | 卡片尺寸 |
-| `title` | string | — | 卡片标题（带底部分割线） |
+| `title` | string | — | 标题（带底部分割线） |
 | `mb` | number | `0` | 底部外边距 |
 
-常用布局示例：
+**四种形态对比：**
 
-```markdown
-<Card title="默认卡片" accent="#F9D240" padding="6">
-  标准磨砂卡片
-</Card>
-
-<Card :show-accent="false" size="full">
-  底部通栏大卡片，无装饰条
-</Card>
-
-<!-- 双栏并列 -->
-<div class="grid grid-cols-2 gap-4">
-  <Card title="左栏" padding="4" />
-  <Card title="右栏" padding="4" />
-</div>
-```
+| 形态 | 等价于旧的 | 写法 |
+|------|-----------|------|
+| 磨砂底 + 无装饰条 | `highlight-box` | `<Card>` |
+| 磨砂底 + 左装饰条 | `Card` | `<Card accent="#F9D240">` |
+| 磨砂底 + 顶部装饰条 | — | `<Card accent="#F9D240" accent-side="top">` |
+| 无背景 + 左装饰条 | `section-accent` | `<Card :matte="false" accent="#F9D240">` |
 
 ---
 
@@ -282,35 +289,26 @@ class: "theme-project"
 
 核心原则：金黄只用于数字和关键论据，小面积点缀；暗酒红只用于总计，不与金色同屏。
 
-### 4.5 样式工具类
+### 4.5 数据展示工具类
 
-除了 Card 组件外，还有轻量级容器和数据展示类，用于避免 Card 视觉疲劳：
+纯文字数字展示，无需容器背景。适合数据指标的高亮展示：
 
-| 类名 | 作用 | 和 Card 区别 |
-|------|------|-------------|
-| `.section-accent` | 左侧色条的分区容器 | 无背景色、无磨砂效果，纯文字+色条 |
-| `.highlight-box` | 重点结论/总结框 | 磨砂紫底（同 Card），但无装饰条无标题 |
-| `.data-block` | 数据指标块 | 仅文字，无任何背景 |
-| `.data-value` | 数据值（金黄大号加粗） | 配合 text-data 使用 |
-| `.data-label` | 数据标签（浅灰小字） | — |
+| 类名 | 作用 |
+|------|------|
+| `.data-block` | 数据指标容器（纯文字，无背景） |
+| `.data-value` | 数据值（金黄大号加粗） |
+| `.data-label` | 数据标签（浅灰小字） |
 
-**使用对比：**
 ```markdown
-<!-- Card：有磨砂背景，适合承载多内容 -->
-<Card title="模块标题">内容...</Card>
-
-<!-- Section：无背景，适合纯文字分区 -->
-<div class="section-accent">纯文字段落，只有左侧色条</div>
-
-<!-- DataBlock：纯数字展示，无容器 -->
 <div class="data-block">
-  <div class="data-value">128</div>
-  <div class="data-label">指标名称</div>
+  <div class="data-value">1,200万+</div>
+  <div class="data-label">目标用户数</div>
 </div>
-
-<!-- HighlightBox：结论强调 -->
-<div class="highlight-box">**💡 核心结论：** 开发费用占 93%</div>
 ```
+
+> **注意：** 旧版 `.section-accent` 和 `.highlight-box` 已合并到 Card 组件中：
+> - 原 `.section-accent` → `<Card :matte="false" accent="#颜色">`
+> - 原 `.highlight-box` → `<Card>`
 
 ## 五、排版与内容指南
 
@@ -479,19 +477,22 @@ layout: cover
    内容
    </Card>
    ```
-2. **不要嵌套 Card** — Card 内不要再放 Card。需要分层时，外层用 Card，内层用 `section-accent` 或 `data-block`：
+   > 空行会多出间距？已经用 CSS 把 `<p>` 的 margin 压到最小，肉眼几乎看不出。
+
+2. **不要嵌套 Card** — Card 内不要再放 Card。需要分层时，外层用 Card，内层用 `:matte="false"` 变体：
    ```markdown
    <!-- ❌ 错误：Card 嵌套 -->
    <Card>
      <Card>内层</Card>
    </Card>
    
-   <!-- ✅ 正确：外层 Card + 内层 section-accent -->
+   <!-- ✅ 正确：外层 Card + 内层无背景 Card -->
    <Card title="总览">
-     <div class="section-accent">分区内容</div>
+     <Card :matte="false" accent="#F9D240">分区内容</Card>
    </Card>
    ```
-3. **不要每页都用 Card** — 纯文字内容直接用 `section-accent`，纯数字用 `data-block`，结论用 `highlight-box`
+
+3. **不要每页都用磨砂 Card** — 纯文字内容用 `:matte="false"` 切换为无背景模式，纯数字用 `data-block`，视觉更轻盈
 
 ### Mermaid 使用规则
 
@@ -500,11 +501,11 @@ layout: cover
 
 ### 容器选择指南
 
-| 要放什么 | 用什么 | 理由 |
+| 要放什么 | 用什么 | 说明 |
 |---------|--------|------|
-| 标题 + 多行内容 + 表格 | `<Card>` | 需要磨砂背景承托 |
-| 纯文字段落 | `.section-accent` | 轻量，不增加视觉重量 |
-| 数字/指标展示 | `.data-block` | 无需卡片，纯文字干净 |
-| 结论/强调 | `.highlight-box` | 有背景区分但不花哨 |
+| 标题 + 多行内容 + 表格 | `<Card>` | 默认磨砂底承托内容 |
+| 纯文字段落 | `<Card :matte="false" accent="#色值">` | 无背景，仅左侧色条区分 |
+| 结论/强调 | `<Card>` | 默认就是磨砂底无装饰条，正好做结论框 |
+| 数字/指标展示 | `.data-block` | 纯文字，无需容器 |
 | 目录列表 | `<Toc>` | 自带序号和标签样式 |
 | 时间阶段 | `<Timeline>` | 横向阶段条，适合项目排期 |
