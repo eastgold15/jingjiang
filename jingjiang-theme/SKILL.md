@@ -2,8 +2,8 @@
 name: jingjiang-theme
 description: >
   锦江 Slidev 主题（@eastgold15/slidev-theme-jingjiang）的完整使用指南和内容生成器。
-  深紫哑光磨砂政务风，适配高校专业申报、述职汇报、学术答辩场景。
-  只要用户提到做 PPT、写 Slidev 演示文稿、做汇报幻灯片、述职页面、专业申报材料、
+  深紫哑光磨砂政务风，适配述职汇报、方案评审、项目分析、学术答辩等正式汇报场景。
+  只要用户提到做 PPT、写 Slidev 演示文稿、做汇报幻灯片、述职页面、商业计划书、
   学术答辩 Slidev，或者说要"用锦江主题"、"用这个紫色主题"、"用 jingjiang 主题"，
   就应该触发此技能。即使用户只是含糊地说"帮我做个汇报 slides"，也优先考虑使用此技能。
 compatibility:
@@ -211,11 +211,11 @@ graph TB
 
 ```markdown
 <Card title="数据总览">
-| 专业名称 | 在校人数 | 备注 |
-|---------|---------|------|
-| 体育教育 | <span class="text-data">320</span> | 正常招生 |
-| 社会体育 | <span class="text-data">180</span> | <span class="text-desc">暂停招生</span> |
-| **全院总计** | <span class="text-total">500</span> | |
+| 项目 | 数值 | 备注 |
+|------|------|------|
+| 项目A | <span class="text-data">320</span> | 正常 |
+| 项目B | <span class="text-data">180</span> | <span class="text-desc">暂停中</span> |
+| **合计** | <span class="text-total">500</span> | |
 </Card>
 ```
 
@@ -251,7 +251,7 @@ class: "theme-light"
 
 适用于对外宣讲、答辩等需要明亮视觉的场景。所有色值自动切换为浅紫系。
 
-### 4.3 浅色项目分析主题（外卖/方案评审）
+### 4.3 浅色项目分析主题（方案评审/商业计划）
 
 ```yaml
 ---
@@ -269,7 +269,7 @@ class: "theme-project"
 | 高亮数据 | `#b6571a` | 暖橙 |
 | 辅助文字 | `#656d76` | 中灰 |
 
-适用于外卖项目分析、方案评审、商业计划书等需要正式但不过于暗沉的场景。
+适用于项目分析、方案评审、商业计划书等需要正式但不过于暗沉的场景。
 
 ### 4.4 文字层级工具类（四色体系）
 
@@ -305,7 +305,7 @@ class: "theme-project"
 <!-- DataBlock：纯数字展示，无容器 -->
 <div class="data-block">
   <div class="data-value">128</div>
-  <div class="data-label">授课课时</div>
+  <div class="data-label">指标名称</div>
 </div>
 
 <!-- HighlightBox：结论强调 -->
@@ -340,27 +340,19 @@ class: "theme-project"
 layout: cover
 ---
 
-# 体育学院专业设置调整方案
+# 主标题
 
-四川大学锦江学院 · 教务处
+副标题 / 部门名称
 
 <div class="cover-divider" />
 
 <div class="cover-footer">
-<span>四川大学锦江学院 体育学院</span>
+<span>单位全称</span>
 <span>2025年01月</span>
 </div>
 ```
 
-### 5.4 推荐内容结构（专业申报场景）
-
-```
-封面页 (cover) → 目录 (intro) → 现状与背景 → 
-数据总览 → 专业详情（卡片双栏）→ 调整方案 → 
-师资与资源 → 总结（通栏重点高亮）
-```
-
-### 5.5 推荐内容结构（述职汇报场景）
+### 5.4 推荐内容结构（述职汇报场景）
 
 ```
 封面页 (cover) → 工作概述 → 核心成果（数据卡片）→ 
@@ -378,12 +370,12 @@ layout: cover
 
 # 2024年度工作总结汇报
 
-述职人：张三
+汇报人：姓名
 
 <div class="cover-divider" />
 
 <div class="cover-footer">
-<span>四川大学锦江学院 体育学院</span>
+<span>部门/单位全称</span>
 <span>2024年12月</span>
 </div>
 
@@ -395,15 +387,15 @@ layout: cover
 <div class="grid grid-cols-3 gap-4 text-center">
   <div>
     <div class="text-4xl text-data font-bold">128</div>
-    <div class="text-desc">授课课时</div>
+    <div class="text-desc">指标A</div>
   </div>
   <div>
     <div class="text-4xl text-data font-bold">96%</div>
-    <div class="text-desc">学生满意度</div>
+    <div class="text-desc">指标B</div>
   </div>
   <div>
     <div class="text-4xl text-data font-bold">3</div>
-    <div class="text-desc">科研项目</div>
+    <div class="text-desc">指标C</div>
   </div>
 </div>
 </Card>
@@ -413,14 +405,14 @@ layout: cover
 layout: circletl-br
 ---
 
-# 专业建设数据
+# 数据总览
 
-<Card title="各专业在校人数">
-| 专业 | 人数 | 趋势 |
+<Card title="各项目数据">
+| 项目 | 数值 | 趋势 |
 |------|------|------|
-| 体育教育 | <span class="text-data">320</span> | 稳定 |
-| 社会体育 | <span class="text-data">180</span> | <span class="text-desc">缩减中</span> |
-| 运动康复 | <span class="text-data">95</span> | 新增 |
+| 项目A | <span class="text-data">320</span> | 稳定 |
+| 项目B | <span class="text-data">180</span> | <span class="text-desc">缩减中</span> |
+| 项目C | <span class="text-data">95</span> | 新增 |
 | **合计** | <span class="text-total">595</span> | |
 </Card>
 
@@ -435,15 +427,15 @@ layout: circletr-bl
 
 ```mermaid
 graph TB
-    subgraph "前端"
-    A[Slidev 演示]
+    subgraph "模块一"
+    A[前端应用]
     end
-    subgraph "数据层"
-    B[表格数据]
-    C[图表数据]
+    subgraph "模块二"
+    B[后端服务]
+    C[数据库]
     end
     A --> B
-    A --> C
+    B --> C
 ```
 
 </MermaidView>
@@ -460,14 +452,14 @@ layout: cover
 <div class="cover-divider" />
 
 <div class="cover-footer">
-<span>四川大学锦江学院 体育学院</span>
+<span>部门/单位全称</span>
 <span>2024年12月</span>
 </div>
 ```
 
 ## 七、生成内容时的行为准则
 
-1. **先理解场景** — 判断用户是要做专业申报、述职汇报、学术答辩还是项目分析，据此推荐不同的结构和主题
+1. **先理解场景** — 判断用户是要做述职汇报、方案评审、学术答辩还是项目分析，据此推荐不同的结构和主题
 2. **善用布局组合** — cover 做首尾页，正文交替使用 circletl-br / circletr-bl，intro 做章节过渡
 3. **数据可视化优先** — 有数据的页面优先用 Card 承载表格，关键数字用 `text-data` 高亮
 4. **保持风格一致** — 全文深紫底 + 磨砂卡片 + 浅紫分割线，不要引入其他颜色
