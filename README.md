@@ -131,6 +131,26 @@ graph TB
 
 ---
 
+## 原子组件（全局注册）
+
+| 组件 | 作用 | 关键 Props |
+|------|------|-----------|
+| `<AtomBox>` | 容器盒子 | `bordered` |
+| `<AtomFlex>` | 弹性布局 | 无，靠 UnoCSS class |
+| `<AtomText>` | 主题文字 | `type="primary \| muted \| data \| total"` |
+| `<AtomBadge>` | 角标标签 | `type="primary \| success \| warning \| info \| default"` |
+| `<AtomBtn>` | 按钮 | `type="primary \| default"` |
+| `<AtomDivider>` | 分割线 | 无 |
+
+```markdown
+<AtomFlex class="gap-4">
+  <AtomBox class="p-4">
+    <AtomText type="primary">标题</AtomText>
+    <AtomBadge type="success">标签</AtomBadge>
+  </AtomBox>
+</AtomFlex>
+```
+
 ### Toc
 
 目录导航组件，展示演示文稿的章节列表。

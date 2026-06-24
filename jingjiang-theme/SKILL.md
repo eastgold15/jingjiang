@@ -231,6 +231,42 @@ graph TB
 - 仅保留水平浅紫分割线，无竖边框
 - 文字宽松内边距
 
+---
+
+### 3.7 原子组件（已全局注册）
+
+原子组件是最小颗粒的视觉单元，已全局注册，幻灯片中直接用标签，无需 import。
+
+| 组件 | 作用 | 关键 Props |
+|------|------|-----------|
+| `<AtomBox>` | 容器盒子 | `bordered` — 边框 |
+| `<AtomFlex>` | 弹性布局 | 无，全靠 UnoCSS class 控制 |
+| `<AtomText>` | 主题文字 | `type="primary\|muted\|data\|total"` |
+| `<AtomBadge>` | 角标标签 | `type="primary\|success\|warning\|info\|default"` |
+| `<AtomBtn>` | 按钮 | `type="primary\|default"`，`@click` 事件 |
+| `<AtomDivider>` | 分割线 | 无 |
+
+**核心组合示例：**
+```markdown
+<AtomFlex class="gap-4 justify-center">
+  <AtomBox class="p-4" style="background:var(--theme-card-bg)">
+    <AtomFlex justify-between>
+      <AtomText type="primary" class="text-lg">标题</AtomText>
+      <AtomBadge type="success">进行中</AtomBadge>
+    </AtomFlex>
+    <AtomText type="muted">说明文字</AtomText>
+    <AtomDivider class="my-3" />
+    <AtomBtn type="primary" @click="$slidev.nav.next()">下一页</AtomBtn>
+  </AtomBox>
+</AtomFlex>
+```
+
+**设计原则：**
+- 所有原子开启 `$attrs` 透传，外部可加任意 UnoCSS class、原生事件
+- 纯展示无内部状态，状态由幻灯片页面管理
+- 颜色全用主题 CSS 变量，不写死固定色值
+- 全局注册后幻灯片中直接用，零 import
+
 ## 四、色彩系统
 
 ### 4.1 深紫主主题（默认，class 不指定）
@@ -507,5 +543,8 @@ layout: cover
 | 纯文字段落 | `<Card :matte="false" accent="#色值">` | 无背景，仅左侧色条区分 |
 | 结论/强调 | `<Card>` | 默认就是磨砂底无装饰条，正好做结论框 |
 | 数字/指标展示 | `.data-block` | 纯文字，无需容器 |
+| 自由组合布局 | `<AtomBox>` + `<AtomFlex>` | 原子组件自由拼接，零 UI 库 |
 | 目录列表 | `<Toc>` | 自带序号和标签样式 |
 | 时间阶段 | `<Timeline>` | 横向阶段条，适合项目排期 |
+| 流程图/图表 | `<MermaidView>` | 可缩放，拖拽平移 |
+| 超长内容 | `<ScrollView>` | 隐藏滚动条，触控板友好 |

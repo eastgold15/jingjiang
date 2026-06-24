@@ -25,8 +25,9 @@ layout: circletl-br
   {icon: '📦', number: '②', title: 'Card 卡片', desc: '磨砂卡片用法', tag: '🌟 所有人'},
   {icon: '📋', number: '③', title: 'Toc 目录', desc: '就是本页', tag: '🌟 所有人'},
   {icon: '⏱', number: '④', title: 'Timeline 时间线', desc: '阶段展示', tag: '🌟 所有人'},
-  {icon: '🎨', number: '⑤', title: '样式工具类', desc: 'Card 四方向装饰条 / DataBlock', tag: '🌟 所有人'},
-  {icon: '🔄', number: '⑥', title: '主题切换', desc: 'theme-project 浅色主题', tag: '🟡 技术参考'},
+  {icon: '🧩', number: '⑤', title: '原子组件', desc: 'AtomBox / Flex / Text / Badge / Btn', tag: '🌟 所有人'},
+  {icon: '🎨', number: '⑥', title: '样式工具类', desc: 'Card 四方向 / DataBlock', tag: '🌟 所有人'},
+  {icon: '🔄', number: '⑦', title: '主题切换', desc: 'theme-project 浅色主题', tag: '🟡 技术参考'},
 ]" />
 
 ---
@@ -201,7 +202,72 @@ layout: circletl-br
 
 ---
 
-# Card 默认模式（结论框）
+# 🧩 原子组件：自由组合
+
+原子组件已全局注册，幻灯片中直接使用标签，无需 import。
+
+<ScrollView max-height="460px">
+
+**AtomBox — 容器盒子**
+<AtomBox class="p-4" style="background:var(--theme-card-bg)">
+配合 UnoCSS class 控制样式，不写死颜色
+</AtomBox>
+
+<AtomBox bordered class="p-4 mt-4">
+有边框的盒子
+</AtomBox>
+
+**AtomFlex — 弹性布局**
+<AtomFlex class="gap-4 mt-4">
+<div class="flex-1 p-4" style="background:var(--theme-card-bg)">左</div>
+<div class="flex-1 p-4" style="background:var(--theme-card-bg)">右</div>
+</AtomFlex>
+
+<AtomFlex class="gap-2 justify-center items-center mt-4">
+<AtomBadge type="primary">推荐</AtomBadge>
+<AtomText>文字 + 标签组合</AtomText>
+</AtomFlex>
+
+**AtomText — 主题文字**
+<div class="mt-4 space-y-2">
+<AtomText>默认正文（白色）</AtomText>
+<AtomText type="muted">辅助文字（浅灰紫）</AtomText>
+<AtomText type="data">数据高亮（金黄加粗）</AtomText>
+<AtomText type="total">总计强调（暗酒红大号）</AtomText>
+</div>
+
+**AtomBadge — 角标标签**
+<AtomFlex class="gap-2 mt-4 flex-wrap">
+<AtomBadge type="primary">推荐</AtomBadge>
+<AtomBadge type="success">成功</AtomBadge>
+<AtomBadge type="warning">警告</AtomBadge>
+<AtomBadge type="info">提示</AtomBadge>
+<AtomBadge type="default">默认</AtomBadge>
+</AtomFlex>
+
+**AtomBtn — 按钮**
+<AtomFlex class="gap-3 mt-4">
+<AtomBtn type="primary">主要按钮</AtomBtn>
+<AtomBtn type="default">默认按钮</AtomBtn>
+</AtomFlex>
+
+**AtomDivider — 分割线**
+<AtomDivider class="my-4" />
+
+**组合示例：信息卡片**
+<AtomBox class="p-4 mt-4" style="background:var(--theme-card-bg)">
+<AtomFlex justify-between items-center class="mb-3">
+<AtomText type="primary" class="text-lg font-bold">模块标题</AtomText>
+<AtomBadge type="success">进行中</AtomBadge>
+</AtomFlex>
+<AtomText type="muted">这是一段说明文字，配合 AtomBadge 和 AtomFlex 自由组合。</AtomText>
+<AtomDivider class="my-3" />
+<AtomFlex justify-end>
+<AtomBtn type="primary" @click="$slidev.nav.next()">下一页</AtomBtn>
+</AtomFlex>
+</AtomBox>
+
+</ScrollView>
 
 不传 `accent` 就是磨砂底无装饰条，天然适合结论强调。
 
@@ -342,6 +408,7 @@ class: "theme-project"
 <tr><th>要放什么</th><th>用什么</th><th>理由</th></tr>
 <tr><td>标题 + 多行内容 + 表格</td><td>`&lt;Card&gt;`</td><td>需要磨砂背景承托</td></tr>
 <tr><td>纯文字段落</td><td>`&lt;Card :matte="false" accent="色值"&gt;`</td><td>无背景，仅色条</td></tr>
+<tr><td>自由组合布局</td><td>`&lt;AtomBox&gt;` + `&lt;AtomFlex&gt;`</td><td>原子组件自由拼接</td></tr>
 <tr><td>数字/指标展示</td><td>`.data-block`</td><td>无需卡片，纯文字干净</td></tr>
 <tr><td>结论/强调</td><td>`&lt;Card&gt;`</td><td>默认就是磨砂底无装饰条</td></tr>
 <tr><td>目录列表</td><td>`&lt;Toc&gt;`</td><td>自带序号和标签样式</td></tr>

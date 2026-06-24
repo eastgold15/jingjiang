@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+defineOptions({ inheritAttrs: false })
+
 const props = withDefaults(defineProps<{
   /** 装饰条颜色，不传则不显示装饰条 */
   accent?: string
@@ -29,7 +31,7 @@ const cardClass = computed(() => [
 </script>
 
 <template>
-  <div :class="cardClass" class="card-base" :style="{ '--card-accent': accent } as any">
+  <div :class="[cardClass, 'card-base', $attrs.class]" :style="{ '--card-accent': accent } as any" v-bind="$attrs">
     <div v-if="accent" class="card-accent" :class="`card-accent-${accentSide}`" />
     <div v-if="title" class="card-title">{{ title }}</div>
     <slot />
