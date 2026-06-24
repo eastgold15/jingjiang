@@ -74,21 +74,6 @@ graph TB
 
 ---
 
-### ScrollView
-
-无滚动条的滚动容器。滚轮垂直翻页，Shift+滚轮水平移动。
-
-```markdown
-<ScrollView max-height="400px">
-超长内容在这里自动滚动...
-</ScrollView>
-```
-
-| 属性 | 类型 | 默认 | 说明 |
-|------|------|------|------|
-| `max-height` | string | `100%` | 容器最大高度 |
-| `max-width` | string | `100%` | 容器最大宽度 |
-
 操作：
 - **滚轮**：垂直翻页（默认）
 - **Shift + 滚轮**：水平平移

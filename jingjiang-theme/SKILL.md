@@ -103,23 +103,6 @@ graph TB
 
 ---
 
-### 3.2 ScrollView — 无滚动条滚动容器
-
-整个容器隐藏滚动条，滚轮垂直翻页，Shift+滚轮水平平移。适合放超长内容。
-
-```markdown
-<ScrollView max-height="400px">
-超长内容...
-</ScrollView>
-```
-
-| 属性 | 类型 | 默认 | 说明 |
-|------|------|------|------|
-| `max-height` | string | `100%` | 容器最大高度 |
-| `max-width` | string | `100%` | 容器最大宽度 |
-
----
-
 ### 3.3 Card — 磨砂容器（通用）
 
 整个主题唯一的容器组件。默认是**磨砂底无装饰条**的盒子，通过属性控制装饰条方向、颜色、背景开关。不传 `accent` 就无装饰条，传了 `accent` 才有。
@@ -498,7 +481,7 @@ layout: cover
 2. **善用布局组合** — cover 做首尾页，正文交替使用 circletl-br / circletr-bl，intro 做章节过渡
 3. **数据可视化优先** — 有数据的页面优先用 Card 承载表格，关键数字用 `text-data` 高亮
 4. **保持风格一致** — 全文深紫底 + 磨砂卡片 + 浅紫分割线，不要引入其他颜色
-5. **长内容用 ScrollView** — 超过一屏的文字内容放入 ScrollView
+5. **长内容用 maxHeight** — 超过一屏的文字内容给 Card 加 `maxHeight` 属性使其滚动
 6. **架构图用 MermaidView** — 复杂流程/架构图用 Mermaid + MermaidView 包裹
 7. **完整输出** — 给出可直接复制使用的完整 `slides.md` 内容
 
@@ -548,4 +531,4 @@ layout: cover
 | 目录列表 | `<Outline>` | 自带序号和标签样式 |
 | 时间阶段 | `<Timeline>` | 横向阶段条，适合项目排期 |
 | 流程图/图表 | `<MermaidView>` | 可缩放，拖拽平移 |
-| 超长内容 | `<ScrollView>` | 隐藏滚动条，触控板友好 |
+| 超长内容 | `<Card maxHeight>` | 隐藏滚动条，触控板友好 |

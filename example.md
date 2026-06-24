@@ -403,7 +403,7 @@ class: "theme-project"
 
 # 组件总览：什么时候用什么
 
-<Card title="容器选择指南" padding="4">
+<Card title="容器选择指南" padding="4" maxHeight="450px">
 
 
 <table>
