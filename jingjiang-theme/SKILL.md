@@ -154,6 +154,7 @@ graph TB
 | `padding` | number | `6` | 内边距（UnoCSS p-X） |
 | `title` | string | — | 标题（带底部分割线） |
 | `mb` | number | `0` | 底部外边距 |
+| `maxHeight` | string | — | 最大高度，传了则内容超出后滚动（如 `"460px"`） |
 
 **四种形态对比：**
 

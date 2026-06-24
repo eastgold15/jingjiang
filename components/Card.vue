@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 defineOptions({ inheritAttrs: false })
 
@@ -16,6 +16,10 @@ const props = withDefaults(defineProps<{
   matte?: boolean
   /** 标题（可选） */
   title?: string
+  /** 最大高度，传了则内容超出后滚动 */
+  maxHeight?: string
+  /** 最大宽度 */
+  maxWidth?: string
 }>(), {
   accentSide: 'left',
   padding: 6,
@@ -23,22 +27,38 @@ const props = withDefaults(defineProps<{
   matte: true,
 })
 
+const isScrollable = computed(() => !!props.maxHeight)
+
 const wrapClass = computed(() => [
   props.matte ? 'card-matte' : '',
   props.mb ? `mb-${props.mb}` : '',
+  isScrollable.value ? 'card-scrollable' : '',
 ].filter(Boolean).join(' '))
 
 const contentClass = computed(() => `p-${props.padding}`)
 
 // 判断是否是左右竖向线条
 const isVerticalBar = computed(() => ['left', 'right'].includes(props.accentSide!))
+
+// shift+滚轮横向滚动
+const elRef = ref<HTMLDivElement>()
+function onWheel(e: WheelEvent) {
+  if (!isScrollable.value || !elRef.value) return
+  if (e.shiftKey) {
+    e.preventDefault()
+    elRef.value.scrollLeft += e.deltaY
+  }
+}
 </script>
 
 <template>
   <!-- 外层外壳：布局约束层 -->
   <div
     :class="[wrapClass, 'card-wrap', $attrs.class]"
+    :style="(isScrollable ? { maxHeight: maxHeight, maxWidth: maxWidth || '100%' } : {}) as any"
     v-bind="$attrs"
+    ref="elRef"
+    @wheel="onWheel"
   >
     <!-- 内层内容区 -->
     <div
@@ -51,7 +71,11 @@ const isVerticalBar = computed(() => ['left', 'right'].includes(props.accentSide
       <!-- 左右竖向条 + 内容flex容器 -->
       <div v-if="accent && isVerticalBar" class="card-flex-row" :class="`flex-${accentSide}`">
         <div class="card-bar card-bar-vertical" />
-        <div class="card-inner-text">
+        <div v-if="isScrollable" class="scroll-inner card-inner-text">
+          <div v-if="title" class="card-title">{{ title }}</div>
+          <slot />
+        </div>
+        <div v-else class="card-inner-text">
           <div v-if="title" class="card-title">{{ title }}</div>
           <slot />
         </div>
@@ -78,6 +102,14 @@ const isVerticalBar = computed(() => ['left', 'right'].includes(props.accentSide
   filter: opacity(0.96);
   box-shadow: none;
 }
+.card-scrollable {
+  @apply overflow-auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.card-scrollable::-webkit-scrollbar {
+  display: none;
+}
 
 .card-content {
   width: 100%;
@@ -102,7 +134,7 @@ const isVerticalBar = computed(() => ['left', 'right'].includes(props.accentSide
 }
 .card-bar-vertical {
   width: 4px;
-  flex-shrink: 0; /* 固定4px宽度，不压缩 */
+  flex-shrink: 0;
 }
 .card-bar-top,
 .card-bar-bottom {
@@ -121,6 +153,18 @@ const isVerticalBar = computed(() => ['left', 'right'].includes(props.accentSide
   @apply mb-3 pb-3 text-lg font-bold;
   color: #FFFFFF;
   border-bottom: 1px solid #9D78C2;
+}
+
+/* 滚动内容内层包装 */
+.scroll-inner {
+  padding-bottom: 1.5rem;
+}
+.scroll-inner :deep(p),
+.scroll-inner :deep(h1),
+.scroll-inner :deep(h2),
+.scroll-inner :deep(h3),
+.scroll-inner :deep(div) {
+  margin-bottom: 0;
 }
 
 /* 文本段落重置 */
