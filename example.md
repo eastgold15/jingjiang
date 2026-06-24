@@ -19,7 +19,7 @@ layout: circletl-br
 # Toc 目录导航组件
 
 使用 `<Toc>` 展示演示文稿章节列表，自动带序号、图标、标签：
-
+<!-- 
 <Toc :items="[
   {icon: '🎯', number: '①', title: '组件概览', desc: '所有组件一览', tag: '🌟 所有人'},
   {icon: '📦', number: '②', title: 'Card 卡片', desc: '磨砂卡片用法', tag: '🌟 所有人'},
@@ -28,7 +28,7 @@ layout: circletl-br
   {icon: '🧩', number: '⑤', title: '原子组件', desc: 'AtomBox / Flex / Text / Badge / Btn', tag: '🌟 所有人'},
   {icon: '🎨', number: '⑥', title: '样式工具类', desc: 'Card 四方向 / DataBlock', tag: '🌟 所有人'},
   {icon: '🔄', number: '⑦', title: '主题切换', desc: 'theme-project 浅色主题', tag: '🟡 技术参考'},
-]" />
+]" /> -->
 
 ---
 layout: circletr-bl
@@ -411,7 +411,7 @@ class: "theme-project"
 <tr><td>自由组合布局</td><td>`&lt;AtomBox&gt;` + `&lt;AtomFlex&gt;`</td><td>原子组件自由拼接</td></tr>
 <tr><td>数字/指标展示</td><td>`.data-block`</td><td>无需卡片，纯文字干净</td></tr>
 <tr><td>结论/强调</td><td>`&lt;Card&gt;`</td><td>默认就是磨砂底无装饰条</td></tr>
-<tr><td>目录列表</td><td>`&lt;Toc&gt;`</td><td>自带序号和标签样式</td></tr>
+<!-- <tr><td>目录列表</td><td>`&lt;Toc&gt;`</td><td>自带序号和标签样式</td></tr> -->
 <tr><td>时间阶段</td><td>`&lt;Timeline&gt;`</td><td>横向阶段条，适合排期</td></tr>
 <tr><td>流程图/图表</td><td>`&lt;MermaidView&gt;`</td><td>可缩放，拖拽平移</td></tr>
 <tr><td>超长内容</td><td>`&lt;ScrollView&gt;`</td><td>隐藏滚动条，触控板友好</td></tr>
