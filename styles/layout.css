@@ -33,6 +33,17 @@
   --theme-light-text-red-total: #862840;
   --theme-light-accent-line: #d4a720;
 
+    /* ========== 主题3：浅色项目分析主题（外卖/方案评审） ========== */
+  --theme-project-bg: #f5f7fa;
+  --theme-project-card-bg: #ffffff;
+  --theme-project-card-header-bg: #e8ecf1;
+  --theme-project-divider-line: #d0d7de;
+  --theme-project-text-main: #1f2328;
+  --theme-project-text-yellow: #b6571a;
+  --theme-project-text-gray: #656d76;
+  --theme-project-text-red-total: #cf222e;
+  --theme-project-accent-line: #b6571a;
+
   /* Slidev 默认覆盖 */
   --slidev-theme-primary: var(--theme-divider-line);
 }
@@ -71,6 +82,19 @@
 /* 浅色主题关闭深色白点，替换淡紫圆点 */
 .theme-light .slidev-layout {
   /* background-image: radial-gradient(rgba(123, 88, 168, 0.06) 1px, transparent 1px); */
+}
+
+/* 切换主题类：页面加 class="theme-project" 切换浅色项目分析版 */
+.theme-project {
+  --theme-main-bg: var(--theme-project-bg);
+  --theme-card-bg: var(--theme-project-card-bg);
+  --theme-card-header-bg: var(--theme-project-card-header-bg);
+  --theme-divider-line: var(--theme-project-divider-line);
+  --theme-text-white: var(--theme-project-text-main);
+  --theme-text-yellow: var(--theme-project-text-yellow);
+  --theme-text-gray: var(--theme-project-text-gray);
+  --theme-text-red-total: var(--theme-project-text-red-total);
+  --theme-accent-line: var(--theme-project-accent-line);
 }
 
 /* ======================================
@@ -179,6 +203,14 @@ h3 {
   background-color: var(--theme-card-header-bg);
 }
 
+/* Card 嵌套修复：内层卡变透明，只保留装饰条和文字 */
+.card-matte .card-matte {
+  background-color: transparent !important;
+  filter: none !important;
+  box-shadow: none !important;
+  @apply p-0;
+}
+
 /* ======================================
   表格专用样式（匹配PPT数据表格规范）
 ====================================== */
@@ -226,6 +258,36 @@ td {
 .text-total {
   color: var(--theme-text-red-total);
   @apply font-bold text-xl;
+}
+
+/* ======================================
+  轻量容器：section-accent（替代 Card，只有左侧色条，无背景）
+====================================== */
+.section-accent {
+  @apply pl-4 py-2;
+  border-left: 3px solid var(--theme-accent-line);
+}
+
+/* 重点结论/高亮框 */
+.highlight-box {
+  @apply p-4;
+  background-color: var(--theme-card-bg);
+  filter: opacity(0.96);
+}
+
+/* ======================================
+  数据展示工具类（纯文字，无容器背景）
+====================================== */
+.data-block {
+  @apply text-center;
+}
+.data-value {
+  @apply text-3xl font-bold;
+  color: var(--theme-text-yellow);
+}
+.data-label {
+  @apply text-sm;
+  color: var(--theme-text-gray);
 }
 
 /* ======================================
