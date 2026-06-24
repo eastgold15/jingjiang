@@ -1,0 +1,47 @@
+{
+  "run_type": "with_skill",
+  "passed": 7,
+  "total": 8,
+  "expectations": [
+    {
+      "text": "mentions-cover-layout",
+      "passed": true,
+      "evidence": "Found 'cover'"
+    },
+    {
+      "text": "mentions-circle-layouts",
+      "passed": true,
+      "evidence": "Found 'circlet[lr]-b[rl]|circle-t[lr]-b[rl]' (matches: ['circle-tl-br', 'circle-tr-bl', 'circle-tl-br', 'circle-tl-br', 'circle-tr-bl', 'circle-tl-br'])"
+    },
+    {
+      "text": "mentions-card-component",
+      "passed": true,
+      "evidence": "Found 'Card'"
+    },
+    {
+      "text": "mentions-mermaid-view",
+      "passed": true,
+      "evidence": "Found 'MermaidView'"
+    },
+    {
+      "text": "mentions-scroll-view",
+      "passed": true,
+      "evidence": "Found 'ScrollView'"
+    },
+    {
+      "text": "explains-cover-footer",
+      "passed": true,
+      "evidence": "Found 'cover-footer'"
+    },
+    {
+      "text": "explains-mermaid-zoom",
+      "passed": true,
+      "evidence": "Found '缩放|放大|zoom|滚轮|重置|⟲' (matches: ['缩放', '滚轮', '缩放', '滚轮', '放大', '缩放', '⟲', '重置', '滚轮', '滚轮', '放大', '放大', '缩放', '滚轮', '滚轮', '缩放', '放大', '⟲', '重置', '缩放', '放大', '滚轮', '缩放', '⟲'])"
+    },
+    {
+      "text": "mentions-color-system",
+      "passed": false,
+      "evidence": "Missing '配色'"
+    }
+  ]
+}

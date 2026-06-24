@@ -1,0 +1,15 @@
+{
+  "eval_id": 3,
+  "eval_name": "theme-query-knowledge",
+  "prompt": "锦江主题有哪些布局和组件？每个布局适合什么场景？我想知道怎么在封面里加单位和日期，还有怎么放大看 mermaid 图表。",
+  "assertions": [
+    {"name": "mentions-cover-layout", "description": "提到 cover 布局", "check": "file_contains", "value": "cover"},
+    {"name": "mentions-circle-layouts", "description": "提到 circle-tl-br 或 circle-tr-bl", "check": "file_contains_regex", "value": "circlet[lr]-b[rl]|circle-t[lr]-b[rl]"},
+    {"name": "mentions-card-component", "description": "提到 Card 组件", "check": "file_contains", "value": "Card"},
+    {"name": "mentions-mermaid-view", "description": "提到 MermaidView 组件", "check": "file_contains", "value": "MermaidView"},
+    {"name": "mentions-scroll-view", "description": "提到 ScrollView 组件", "check": "file_contains", "value": "ScrollView"},
+    {"name": "explains-cover-footer", "description": "解释封面页的页脚结构", "check": "file_contains", "value": "cover-footer"},
+    {"name": "explains-mermaid-zoom", "description": "提及缩放/放大功能", "check": "file_contains_regex", "value": "缩放|放大|zoom|滚轮|重置|⟲"},
+    {"name": "mentions-color-system", "description": "提到主题配色", "check": "file_contains", "value": "配色"}
+  ]
+}

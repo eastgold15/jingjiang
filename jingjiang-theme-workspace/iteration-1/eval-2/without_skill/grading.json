@@ -1,0 +1,42 @@
+{
+  "run_type": "without_skill",
+  "passed": 7,
+  "total": 7,
+  "expectations": [
+    {
+      "text": "uses-grid-cols-2",
+      "passed": true,
+      "evidence": "Found 'grid-cols-2'"
+    },
+    {
+      "text": "uses-card-with-accent",
+      "passed": true,
+      "evidence": "Found 'accent'"
+    },
+    {
+      "text": "has-bottom-full-card",
+      "passed": true,
+      "evidence": "Found 'full'"
+    },
+    {
+      "text": "multiple-card-tags",
+      "passed": true,
+      "evidence": "Found 3 occurrences of '<Card', need >= 3"
+    },
+    {
+      "text": "has-course-content",
+      "passed": true,
+      "evidence": "Found '课程'"
+    },
+    {
+      "text": "has-teacher-content",
+      "passed": true,
+      "evidence": "Found '师资'"
+    },
+    {
+      "text": "uses-gold-accent",
+      "passed": true,
+      "evidence": "Found 'F9D240|f9d240|gold|金黄|金色' (matches: ['F9D240', 'F9D240'])"
+    }
+  ]
+}

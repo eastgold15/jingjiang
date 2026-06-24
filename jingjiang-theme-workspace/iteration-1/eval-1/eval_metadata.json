@@ -1,0 +1,17 @@
+{
+  "eval_id": 1,
+  "eval_name": "complete-slide-deck-generation",
+  "prompt": "我要做一个述职汇报的 Slidev 演示文稿，用锦江这个紫色主题。帮我写一个完整的 slides.md，内容是关于体育学院2024年工作总结，包含封面、工作概述（用卡片展示三个关键数据指标）、专业建设数据（表格）、重点项目（用 Mermaid 流程图展示），以及结束页。",
+  "assertions": [
+    {"name": "uses-cover-layout", "description": "输出包含 layout: cover 用于首页", "check": "file_contains", "value": "layout: cover"},
+    {"name": "uses-circle-layout", "description": "输出包含 circle-tl-br 或 circle-tr-bl 布局用于正文", "check": "file_contains_regex", "value": "layout: circlet[lr]-b[rl]|layout: circle-t[lr]-b[rl]"},
+    {"name": "uses-card-component", "description": "输出使用了 Card 组件标签", "check": "file_contains", "value": "<Card"},
+    {"name": "uses-mermaid-view", "description": "输出使用了 MermaidView 组件", "check": "file_contains", "value": "<MermaidView"},
+    {"name": "uses-text-data-class", "description": "数据高亮使用了 text-data 类", "check": "file_contains", "value": "text-data"},
+    {"name": "has-cover-divider", "description": "封面页包含 cover-divider 分割线", "check": "file_contains", "value": "cover-divider"},
+    {"name": "has-cover-footer", "description": "封面页包含 cover-footer 页脚", "check": "file_contains", "value": "cover-footer"},
+    {"name": "has-ending-slide", "description": "有结束页/感谢页", "check": "file_contains_regex", "value": "感谢|谢谢|结束|Thank"},
+    {"name": "has-multiple-slides", "description": "至少包含 5 页幻灯片", "check": "file_line_count_regex", "value": "^---$", "min_count": 4},
+    {"name": "correct-theme-name", "description": "引用了正确的主题包名", "check": "file_contains", "value": "@eastgold15/slidev-theme-jingjiang"}
+  ]
+}

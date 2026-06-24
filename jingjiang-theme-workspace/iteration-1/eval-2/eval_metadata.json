@@ -1,0 +1,14 @@
+{
+  "eval_id": 2,
+  "eval_name": "card-dual-column-layout",
+  "prompt": "我想在幻灯片里并排放两个磨砂卡片，左边放'课程设置'右边放'师资队伍'，都用金色装饰条，然后底部再放一个通栏大卡片展示合计数据。用锦江主题帮我写好这段 Slidev 代码。",
+  "assertions": [
+    {"name": "uses-grid-cols-2", "description": "使用 grid-cols-2 实现双栏并列", "check": "file_contains", "value": "grid-cols-2"},
+    {"name": "uses-card-with-accent", "description": "Card 使用了 accent 属性", "check": "file_contains", "value": "accent"},
+    {"name": "has-bottom-full-card", "description": "底部有通栏 size=full 大卡片", "check": "file_contains", "value": "full"},
+    {"name": "multiple-card-tags", "description": "包含至少 3 个 Card 标签", "check": "file_count_min", "value": "<Card", "min_count": 3},
+    {"name": "has-course-content", "description": "课程设置卡片包含实际内容", "check": "file_contains", "value": "课程"},
+    {"name": "has-teacher-content", "description": "师资队伍卡片包含实际内容", "check": "file_contains", "value": "师资"},
+    {"name": "uses-gold-accent", "description": "装饰条使用金色调", "check": "file_contains_regex", "value": "F9D240|f9d240|gold|金黄|金色"}
+  ]
+}
