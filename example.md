@@ -209,7 +209,7 @@ layout: circletl-br
 <ScrollView max-height="460px">
 
 **AtomBox — 容器盒子**
-<AtomBox class="p-4" style="background:var(--theme-card-bg)">
+<AtomBox class="p-4" style="background:var(--bg-card)">
 配合 UnoCSS class 控制样式，不写死颜色
 </AtomBox>
 
@@ -219,8 +219,8 @@ layout: circletl-br
 
 **AtomFlex — 弹性布局**
 <AtomFlex class="gap-4 mt-4">
-<div class="flex-1 p-4" style="background:var(--theme-card-bg)">左</div>
-<div class="flex-1 p-4" style="background:var(--theme-card-bg)">右</div>
+<div class="flex-1 p-4" style="background:var(--bg-card)">左</div>
+<div class="flex-1 p-4" style="background:var(--bg-card)">右</div>
 </AtomFlex>
 
 <AtomFlex class="gap-2 justify-center items-center mt-4">
@@ -255,7 +255,7 @@ layout: circletl-br
 <AtomDivider class="my-4" />
 
 **组合示例：信息卡片**
-<AtomBox class="p-4 mt-4" style="background:var(--theme-card-bg)">
+<AtomBox class="p-4 mt-4" style="background:var(--bg-card)">
 <AtomFlex justify-between items-center class="mb-3">
 <AtomText type="primary" class="text-lg font-bold">模块标题</AtomText>
 <AtomBadge type="success">进行中</AtomBadge>

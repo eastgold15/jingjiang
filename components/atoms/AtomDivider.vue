@@ -10,6 +10,6 @@ defineOptions({ inheritAttrs: false })
 .atom-divider {
   width: 100%;
   height: 1px;
-  background: var(--theme-divider-line);
+  background: var(--border);
 }
 </style>

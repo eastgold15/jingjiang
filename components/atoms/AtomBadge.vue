@@ -16,12 +16,12 @@ withDefaults(defineProps<{
   display: inline-block;
   padding: 0.125rem 0.5rem;
   font-size: 0.75rem;
-  background: var(--theme-card-bg);
-  color: var(--theme-text-gray);
+  background: var(--bg-card);
+  color: var(--text-muted);
 }
-.atom-badge-primary { background: var(--theme-text-yellow); color: #42205C; }
+.atom-badge-primary { background: var(--text-emphasis); color: #42205C; }
 .atom-badge-success { background: #6BCB9C; color: #fff; }
 .atom-badge-warning { background: #FFB74D; color: #fff; }
 .atom-badge-info { background: #7EC8E3; color: #fff; }
-.atom-badge-default { background: var(--theme-card-bg); color: var(--theme-text-gray); }
+.atom-badge-default { background: var(--bg-card); color: var(--text-muted); }
 </style>

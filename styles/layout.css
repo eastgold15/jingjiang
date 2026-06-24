@@ -1,109 +1,90 @@
 /* ======================================
-  全局根变量 两套主题切换（默认主题1：深紫磨砂政务）
+  语义化 CSS 变量体系
+  变量名按「用途」命名，而非「颜色」。
+  改一组变量值 = 换一个完整主题。
 ====================================== */
 :root {
-  /* ========== 主题1：深紫哑光政务主主题（体院专业申报汇报） ========== */
-  --theme-main-bg: #42205c;
-  /* 页面大背景 哑光深紫 */
-  --theme-card-bg: #532b73;
-  /* 磨砂内容卡片底色 */
-  --theme-card-header-bg: #4c2668;
-  /* 表格表头加深底色 */
-  --theme-divider-line: #9d78c2;
-  /* 浅紫分割细线 */
-  --theme-text-white: #ffffff;
-  /* 一级标题纯白 */
-  --theme-text-yellow: #f9d240;
-  /* 数据高亮金黄 */
-  --theme-text-gray: #d1c4e0;
-  /* 辅助浅灰小字 */
-  --theme-text-red-total: #9e2b42;
-  /* 总计暗酒红 */
-  --theme-accent-line: #f9d240;
-  /* 侧边金色装饰条 */
+  /* ========== 主题1（默认）：深紫哑光 ========== */
+  --bg-page: #42205c;
+  --bg-card: #532b73;
+  --bg-card-header: #4c2668;
+  --border: #9d78c2;
+  --text-primary: #ffffff;
+  --text-emphasis: #f9d240;
+  --text-muted: #d1c4e0;
+  --text-danger: #9e2b42;
+  --accent: #f9d240;
 
-  /* ========== 主题2：浅紫清爽备用主题（对外宣讲/答辩） ========== */
+  /* ========== 主题2：浅紫清爽 ========== */
   --theme-light-bg: #f3eefa;
-  --theme-light-card-bg: #e4d9f2;
-  --theme-light-card-header-bg: #c8b4e3;
-  --theme-light-divider-line: #7b58a8;
-  --theme-light-text-main: #371a4e;
-  --theme-light-text-yellow: #d4a720;
-  --theme-light-text-gray: #6a5480;
-  --theme-light-text-red-total: #862840;
-  --theme-light-accent-line: #d4a720;
+  --theme-light-card: #e4d9f2;
+  --theme-light-card-header: #c8b4e3;
+  --theme-light-border: #7b58a8;
+  --theme-light-text: #371a4e;
+  --theme-light-emphasis: #d4a720;
+  --theme-light-muted: #6a5480;
+  --theme-light-danger: #862840;
+  --theme-light-accent: #d4a720;
 
-    /* ========== 主题3：浅色项目分析主题（外卖/方案评审） ========== */
+  /* ========== 主题3：浅色项目分析 ========== */
   --theme-project-bg: #f5f7fa;
-  --theme-project-card-bg: #ffffff;
-  --theme-project-card-header-bg: #e8ecf1;
-  --theme-project-divider-line: #d0d7de;
-  --theme-project-text-main: #1f2328;
-  --theme-project-text-yellow: #b6571a;
-  --theme-project-text-gray: #656d76;
-  --theme-project-text-red-total: #cf222e;
-  --theme-project-accent-line: #b6571a;
+  --theme-project-card: #ffffff;
+  --theme-project-card-header: #e8ecf1;
+  --theme-project-border: #d0d7de;
+  --theme-project-text: #1f2328;
+  --theme-project-emphasis: #b6571a;
+  --theme-project-muted: #656d76;
+  --theme-project-danger: #cf222e;
+  --theme-project-accent: #b6571a;
 
-  /* Slidev 默认覆盖 */
-  --slidev-theme-primary: var(--theme-divider-line);
+  --slidev-theme-primary: var(--border);
 }
 
-/* 切换主题类：页面加 class="theme-light" 切换浅紫版 */
+/* 主题2：页面加 class="theme-light" */
 .theme-light {
-  --theme-main-bg: var(--theme-light-bg);
-  --theme-card-bg: var(--theme-light-card-bg);
-  --theme-card-header-bg: var(--theme-light-card-header-bg);
-  --theme-divider-line: var(--theme-light-divider-line);
-  --theme-text-white: var(--theme-light-text-main);
-  --theme-text-yellow: var(--theme-light-text-yellow);
-  --theme-text-gray: var(--theme-light-text-gray);
-  --theme-text-red-total: var(--theme-light-text-red-total);
-  --theme-accent-line: var(--theme-light-accent-line);
+  --bg-page: var(--theme-light-bg);
+  --bg-card: var(--theme-light-card);
+  --bg-card-header: var(--theme-light-card-header);
+  --border: var(--theme-light-border);
+  --text-primary: var(--theme-light-text);
+  --text-emphasis: var(--theme-light-emphasis);
+  --text-muted: var(--theme-light-muted);
+  --text-danger: var(--theme-light-danger);
+  --accent: var(--theme-light-accent);
 }
 
-/* ======================================
-  全局页面基础样式 磨砂底层底纹（白色低透小圆点）
-====================================== */
-.slidev-layout {
-  @apply h-full w-full p-8;
-  background-color: var(--theme-main-bg);
-  /* 底层磨砂白点底纹 不遮挡文字 */
-  /* background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px); */
-  background-size: 300px 300px;
-  /* background-size: 100% 100%; */
-  /* 全局文字默认 */
-  color: var(--theme-text-white);
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
-}
-
-/* 浅色主题关闭深色白点，替换淡紫圆点 */
-.theme-light .slidev-layout {
-  /* background-image: radial-gradient(rgba(123, 88, 168, 0.06) 1px, transparent 1px); */
-}
-
-/* 切换主题类：页面加 class="theme-project" 切换浅色项目分析版 */
+/* 主题3：页面加 class="theme-project" */
 .theme-project {
-  --theme-main-bg: var(--theme-project-bg);
-  --theme-card-bg: var(--theme-project-card-bg);
-  --theme-card-header-bg: var(--theme-project-card-header-bg);
-  --theme-divider-line: var(--theme-project-divider-line);
-  --theme-text-white: var(--theme-project-text-main);
-  --theme-text-yellow: var(--theme-project-text-yellow);
-  --theme-text-gray: var(--theme-project-text-gray);
-  --theme-text-red-total: var(--theme-project-text-red-total);
-  --theme-accent-line: var(--theme-project-accent-line);
+  --bg-page: var(--theme-project-bg);
+  --bg-card: var(--theme-project-card);
+  --bg-card-header: var(--theme-project-card-header);
+  --border: var(--theme-project-border);
+  --text-primary: var(--theme-project-text);
+  --text-emphasis: var(--theme-project-emphasis);
+  --text-muted: var(--theme-project-muted);
+  --text-danger: var(--theme-project-danger);
+  --accent: var(--theme-project-accent);
 }
-/* 浅色主题下代码块背景修正（Shiki dark 模式黑底不搭） */
+
+/* 浅色主题代码块背景修正（Shiki dark 模式黑底不搭） */
 .theme-project .shiki,
 .theme-project pre.shiki {
   background-color: #eef0f4 !important;
 }
 
 /* ======================================
-  圆背景布局：两张透明圆装饰
+  全局页面基础
+====================================== */
+.slidev-layout {
+  @apply h-full w-full p-8;
+  background-color: var(--bg-page);
+  background-size: 300px 300px;
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* ======================================
+  圆背景装饰布局
 ====================================== */
 .slidev-layout.circle-tl-br {
   background-image:
@@ -111,9 +92,7 @@
     url('/透明圆.png'),
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%),
     radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
-  /* 左上圆向左、向上偏移溢出；右下圆向右、向下偏移溢出 */
   background-position: -100px -100px, calc(100% + 100px) calc(100% + 100px), -100px -100px, calc(100% + 100px) calc(100% + 100px);
-  /* 左上大圆320px，右下小圆220px；渐变圆同步对应尺寸 */
   background-size: 320px, 220px, 320px 320px, 220px 220px;
   background-repeat: no-repeat;
 }
@@ -124,74 +103,64 @@
     url('/透明圆.png'),
     radial-gradient(circle at top right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%),
     radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
-  /* 右上圆向右、向上溢出；左下圆向左、向下溢出 */
   background-position: calc(100% + 100px) -100px, -100px calc(100% + 100px), calc(100% + 100px) -100px, -100px calc(100% + 100px);
-  /* 右上大圆320px，左下小圆220px；渐变圆同步对应尺寸 */
   background-size: 320px, 220px, 320px 320px, 220px 220px;
   background-repeat: no-repeat;
 }
 
 /* ======================================
-  封面页 cover / intro 版式（两套主题通用布局）
+  封面 / intro 版式
 ====================================== */
 .slidev-layout.cover,
 .slidev-layout.intro {
   @apply grid h-full place-content-center gap-6;
 
-  /* 封面主标题 超大粗体 */
   h1 {
     @apply text-6xl font-bold leading-tight;
-    color: var(--theme-text-white);
+    color: var(--text-primary);
   }
 
-  /* 封面副标题 */
   h1+p {
     @apply -mt-2 mb-4 text-xl;
-    color: var(--theme-text-gray);
+    color: var(--text-muted);
   }
 
-  /* 封面分割线 */
   .cover-divider {
     @apply w-full h-px mt-4 mb-8;
-    background-color: var(--theme-divider-line);
+    background-color: var(--border);
   }
 
-  /* 封面页脚左右文字 */
   .cover-footer {
     @apply w-full flex justify-between text-base;
-    color: var(--theme-text-gray);
+    color: var(--text-muted);
   }
 }
 
 /* ======================================
-  内容层级间距通用控制
+  内容层级间距
 ====================================== */
 p+h2,
 ul+h2,
 table+h2 {
   @apply mt-10 text-3xl font-bold;
-  color: var(--theme-text-white);
+  color: var(--text-primary);
 }
 
 h3 {
   @apply text-2xl font-semibold mb-3;
-  color: var(--theme-text-white);
+  color: var(--text-primary);
 }
 
 /* ======================================
-  核心组件：磨砂卡片（PPT所有内容容器）
-  UnoCSS 封装磨砂块，直角、无阴影、哑光质感
+  卡片容器
 ====================================== */
 .card-matte {
   @apply p-6 w-full rounded-none border-0;
-  background-color: var(--theme-card-bg);
-  /* 磨砂雾面：轻微透明+细颗粒，无玻璃高光 */
+  background-color: var(--bg-card);
   filter: opacity(0.96);
-  /* 禁止立体特效 */
   box-shadow: none;
 }
 
-/* 卡片左侧金色竖装饰条 搭配 .card-matte 使用 */
 .card-accent-left {
   @apply relative pl-5;
 }
@@ -199,16 +168,14 @@ h3 {
 .card-accent-left::before {
   content: "";
   @apply absolute left-0 top-0 bottom-0 w-1;
-  background-color: var(--theme-accent-line);
+  background-color: var(--accent);
 }
 
-/* 底部通栏总结大卡片 */
 .card-full-width {
   @apply mt-6 p-4 w-full;
-  background-color: var(--theme-card-header-bg);
+  background-color: var(--bg-card-header);
 }
 
-/* Card 嵌套修复：内层卡变透明，只保留装饰条和文字 */
 .card-matte .card-matte {
   background-color: transparent !important;
   filter: none !important;
@@ -217,31 +184,28 @@ h3 {
 }
 
 /* ======================================
-  表格专用样式（匹配PPT数据表格规范）
+  表格
 ====================================== */
 table {
   @apply w-full border-collapse;
 }
 
-/* 表头 */
 thead tr {
-  background-color: var(--theme-card-header-bg);
+  background-color: var(--bg-card-header);
 }
 
 th {
   @apply py-3 px-4 text-left font-bold;
-  color: var(--theme-text-white);
-  border-bottom: 1px solid var(--theme-divider-line);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
 }
 
-/* 表格内容行 */
 td {
   @apply py-3 px-4;
-  color: var(--theme-text-white);
-  border-bottom: 1px solid var(--theme-divider-line);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
 }
 
-/* 删除竖边框，仅保留水平分割线 */
 th,
 td {
   border-left: transparent;
@@ -249,71 +213,73 @@ td {
 }
 
 /* ======================================
-  文字高亮工具类 UnoCSS 直接调用
+  文字工具类
 ====================================== */
 .text-data {
-  color: var(--theme-text-yellow);
+  color: var(--text-emphasis);
   @apply font-bold;
 }
 
 .text-desc {
-  color: var(--theme-text-gray);
+  color: var(--text-muted);
 }
 
 .text-total {
-  color: var(--theme-text-red-total);
+  color: var(--text-danger);
   @apply font-bold text-xl;
 }
 
 /* ======================================
-  轻量容器：section-accent（替代 Card，只有左侧色条，无背景）
+  section-accent / highlight-box 兼容兜底
 ====================================== */
 .section-accent {
   @apply pl-4 py-2;
-  border-left: 3px solid var(--theme-accent-line);
+  border-left: 3px solid var(--accent);
 }
 
-/* 重点结论/高亮框 */
 .highlight-box {
   @apply p-4;
-  background-color: var(--theme-card-bg);
+  background-color: var(--bg-card);
   filter: opacity(0.96);
 }
 
-/* 消除 Markdown 空行产生的 p 标签间距（适用于所有容器类） */
 .section-accent p,
 .highlight-box p {
   margin: 0.15em 0;
 }
+
 .section-accent p:first-child,
 .highlight-box p:first-child {
   margin-top: 0;
 }
+
 .section-accent p:last-child,
 .highlight-box p:last-child {
   margin-bottom: 0;
 }
 
 /* ======================================
-  数据展示工具类（纯文字，无容器背景）
+  数据展示
 ====================================== */
 .data-block {
   @apply text-center;
 }
+
 .data-value {
   @apply text-3xl font-bold;
-  color: var(--theme-text-yellow);
+  color: var(--text-emphasis);
 }
+
 .data-label {
   @apply text-sm;
-  color: var(--theme-text-gray);
+  color: var(--text-muted);
 }
 
 /* ======================================
-  极简线性图标样式（灯泡/书本小图标）
+  线性图标
 ====================================== */
 .icon-line {
-  color: var(--theme-text-yellow);
+  color: var(--text-emphasis);
   @apply inline-block w-6 h-6 mr-2 align-middle;
   fill: none;
   stroke-width: 1.5;

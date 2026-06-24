@@ -36,26 +36,26 @@ defineProps<{
 }
 .timeline-step {
   @apply relative p-4 pt-6 text-center;
-  background-color: var(--theme-card-bg);
+  background-color: var(--bg-card);
   filter: opacity(0.96);
 }
 .step-accent-bar {
   @apply absolute top-0 left-0 right-0 h-1;
-  background-color: var(--step-accent, var(--theme-accent-line));
+  background-color: var(--step-accent, var(--accent));
 }
 .step-icon {
   @apply text-2xl mb-2;
 }
 .step-label {
   @apply text-sm font-bold;
-  color: var(--theme-text-white);
+  color: var(--text-primary);
 }
 .step-period {
   @apply text-xs mt-1;
-  color: var(--theme-text-yellow);
+  color: var(--text-emphasis);
 }
 .step-desc {
   @apply text-xs mt-1;
-  color: var(--theme-text-gray);
+  color: var(--text-muted);
 }
 </style>

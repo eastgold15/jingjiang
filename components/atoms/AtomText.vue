@@ -12,9 +12,9 @@ withDefaults(defineProps<{
 </script>
 
 <style scoped>
-.atom-text { color: var(--theme-text-white); }
-.atom-text-primary { color: var(--theme-text-white); font-weight: 700; }
-.atom-text-muted { color: var(--theme-text-gray); }
-.atom-text-data { color: var(--theme-text-yellow); font-weight: 700; }
-.atom-text-total { color: var(--theme-text-red-total); font-weight: 700; font-size: 1.25rem; }
+.atom-text { color: var(--text-primary); }
+.atom-text-primary { color: var(--text-primary); font-weight: 700; }
+.atom-text-muted { color: var(--text-muted); }
+.atom-text-data { color: var(--text-emphasis); font-weight: 700; }
+.atom-text-total { color: var(--text-danger); font-weight: 700; font-size: 1.25rem; }
 </style>

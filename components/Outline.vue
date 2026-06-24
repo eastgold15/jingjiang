@@ -33,7 +33,7 @@ defineProps<{
 <style scoped>
 .outline-row {
   @apply flex items-center gap-4 py-3;
-  border-bottom: 1px solid var(--theme-divider-line);
+  border-bottom: 1px solid var(--border);
 }
 .outline-row:last-child {
   border-bottom: none;
@@ -46,14 +46,14 @@ defineProps<{
 }
 .outline-title {
   @apply font-semibold;
-  color: var(--theme-text-white);
+  color: var(--text-primary);
 }
 .outline-desc {
-  color: var(--theme-text-gray);
+  color: var(--text-muted);
 }
 .outline-tag {
   @apply px-3 py-1 text-xs rounded whitespace-nowrap;
-  background-color: var(--theme-card-bg);
-  color: var(--theme-text-gray);
+  background-color: var(--bg-card);
+  color: var(--text-muted);
 }
 </style>

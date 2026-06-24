@@ -12,9 +12,9 @@ withDefaults(defineProps<{ bordered?: boolean }>(), { bordered: false })
 <style scoped>
 .atom-box {
   background: transparent;
-  color: var(--theme-text-white);
+  color: var(--text-primary);
 }
 .atom-box-bordered {
-  border: 1px solid var(--theme-divider-line);
+  border: 1px solid var(--border);
 }
 </style>

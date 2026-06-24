@@ -20,11 +20,11 @@ const handleClick = (e: MouseEvent) => emit('click', e)
   border: none;
   cursor: pointer;
   font-size: 0.875rem;
-  background: var(--theme-card-bg);
-  color: var(--theme-text-white);
+  background: var(--bg-card);
+  color: var(--text-primary);
 }
 .atom-btn-primary {
-  background: var(--theme-text-yellow);
+  background: var(--text-emphasis);
   color: #42205C;
   font-weight: 700;
 }

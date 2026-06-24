@@ -233,7 +233,7 @@ graph TB
 **核心组合示例：**
 ```markdown
 <AtomFlex class="gap-4 justify-center">
-  <AtomBox class="p-4" style="background:var(--theme-card-bg)">
+  <AtomBox class="p-4" style="background:var(--bg-card)">
     <AtomFlex justify-between>
       <AtomText type="primary" class="text-lg">标题</AtomText>
       <AtomBadge type="success">进行中</AtomBadge>
@@ -255,17 +255,19 @@ graph TB
 
 ### 4.1 深紫主主题（默认，class 不指定）
 
+所有变量均为**语义名**，改一组值即可换整套主题。
+
 | CSS 变量 | 色值 | 用途 |
 |----------|------|------|
-| `--theme-main-bg` | `#42205C` | 页面背景，哑光深紫 |
-| `--theme-card-bg` | `#532B73` | 卡片底色，磨砂紫 |
-| `--theme-card-header-bg` | `#4C2668` | 表头/通栏底色，加深紫 |
-| `--theme-divider-line` | `#9D78C2` | 分割线，浅紫 |
-| `--theme-text-white` | `#FFFFFF` | 一级标题/表头文字，纯白 |
-| `--theme-text-yellow` | `#F9D240` | 数据高亮，金黄 |
-| `--theme-text-gray` | `#D1C4E0` | 辅助说明文字，浅灰紫 |
-| `--theme-text-red-total` | `#9E2B42` | 总计/强调文字，暗酒红 |
-| `--theme-accent-line` | `#F9D240` | 侧边装饰条颜色，金黄 |
+| `--bg-page` | `#42205C` | 页面背景，哑光深紫 |
+| `--bg-card` | `#532B73` | 卡片底色，磨砂紫 |
+| `--bg-card-header` | `#4C2668` | 表头/通栏底色，加深紫 |
+| `--border` | `#9D78C2` | 分割线/边框，浅紫 |
+| `--text-primary` | `#FFFFFF` | 主要文字，纯白 |
+| `--text-emphasis` | `#F9D240` | 数据高亮，金黄 |
+| `--text-muted` | `#D1C4E0` | 辅助说明文字，浅灰紫 |
+| `--text-danger` | `#9E2B42` | 总计/强调文字，暗酒红 |
+| `--accent` | `#F9D240` | 装饰条颜色，金黄 |
 
 ### 4.2 浅紫备用主题（对外宣讲/答辩）
 
@@ -300,12 +302,12 @@ class: "theme-project"
 
 ### 4.4 文字层级工具类（四色体系）
 
-| UnoCSS 类 | 适用文字 | 色值 |
-|-----------|---------|------|
-| —（默认纯白） | 大章节标题、卡片模块标题、表格表头 | `#FFFFFF` |
-| `text-data` | 关键数据、数字高亮（加粗金黄） | `#F9D240` |
-| `text-desc` | 正文说明、备注、数据来源 | `#D1C4E0` |
-| `text-total` | 总计/汇总行（加粗暗酒红大号） | `#9E2B42` |
+| UnoCSS 类 | 对应变量 | 适用文字 |
+|-----------|---------|---------|
+| `text-primary`（默认） | `--text-primary` | 大章节标题、卡片模块标题、表格表头 |
+| `text-data` | `--text-emphasis` | 关键数据、数字高亮（加粗金黄） |
+| `text-desc` | `--text-muted` | 正文说明、备注、数据来源 |
+| `text-total` | `--text-danger` | 总计/汇总行（加粗暗酒红大号） |
 
 核心原则：金黄只用于数字和关键论据，小面积点缀；暗酒红只用于总计，不与金色同屏。
 
