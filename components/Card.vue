@@ -22,8 +22,8 @@ const props = withDefaults(defineProps<{
   maxWidth?: string
 }>(), {
   accentSide: 'left',
-  padding: 6,
-  mb: 0,
+  padding: 1,
+  mb: 2,
   matte: true,
 })
 
@@ -96,6 +96,7 @@ function onWheel(e: WheelEvent) {
 <style scoped>
 .card-wrap {
   @apply w-full;
+ 
 }
 .card-matte {
   background-color: #532B73;

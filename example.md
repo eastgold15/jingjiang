@@ -38,10 +38,10 @@ layout: circletr-bl
 
 整个主题唯一的容器组件。默认是磨砂底无装饰条，通过属性变成任意形态。
 
-<Card maxHeight="460px" padding="4">
+<Card maxHeight="460px" >
 
 **❶ 默认：磨砂底，无装饰条（旧 highlight-box）**
-<Card>
+<Card >
 结论/强调框，磨砂紫底，干净无装饰
 </Card>
 
