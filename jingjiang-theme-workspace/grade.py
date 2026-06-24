@@ -45,7 +45,7 @@ def check_assertion(assertion: dict, text: str) -> dict:
 
 def grade_run(eval_dir: Path, run_type: str, metadata: dict):
     result_file = eval_dir / run_type / "outputs" / "result.md"
-    grading_file = eval_dir / run_type / "grading.json"
+    grading_file = eval_dir / run_type / "run-1" / "grading.json"
 
     if not result_file.exists():
         print(f"  No result file at {result_file}")
@@ -58,11 +58,18 @@ def grade_run(eval_dir: Path, run_type: str, metadata: dict):
     passed_count = sum(1 for r in results if r["passed"])
     total_count = len(results)
 
+    passed = passed_count
+    total = total_count
+    failed = total - passed
     grading = {
         "run_type": run_type,
-        "passed": passed_count,
-        "total": total_count,
-        "expectations": results
+        "expectations": results,
+        "summary": {
+            "passed": passed,
+            "failed": failed,
+            "total": total,
+            "pass_rate": round(passed / total, 4) if total > 0 else 0.0
+        }
     }
 
     grading_file.write_text(json.dumps(grading, ensure_ascii=False, indent=2))

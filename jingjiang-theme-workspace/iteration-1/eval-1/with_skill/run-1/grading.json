@@ -1,0 +1,61 @@
+{
+  "run_type": "with_skill",
+  "expectations": [
+    {
+      "text": "uses-cover-layout",
+      "passed": true,
+      "evidence": "Found 'layout: cover'"
+    },
+    {
+      "text": "uses-circle-layout",
+      "passed": true,
+      "evidence": "Found 'layout: circlet[lr]-b[rl]|layout: circle-t[lr]-b[rl]' (matches: ['layout: circle-tl-br', 'layout: circle-tr-bl', 'layout: circle-tl-br', 'layout: circle-tr-bl', 'layout: circle-tl-br'])"
+    },
+    {
+      "text": "uses-card-component",
+      "passed": true,
+      "evidence": "Found '<Card'"
+    },
+    {
+      "text": "uses-mermaid-view",
+      "passed": true,
+      "evidence": "Found '<MermaidView'"
+    },
+    {
+      "text": "uses-text-data-class",
+      "passed": true,
+      "evidence": "Found 'text-data'"
+    },
+    {
+      "text": "has-cover-divider",
+      "passed": true,
+      "evidence": "Found 'cover-divider'"
+    },
+    {
+      "text": "has-cover-footer",
+      "passed": true,
+      "evidence": "Found 'cover-footer'"
+    },
+    {
+      "text": "has-ending-slide",
+      "passed": true,
+      "evidence": "Found '感谢|谢谢|结束|Thank' (matches: ['感谢'])"
+    },
+    {
+      "text": "has-multiple-slides",
+      "passed": true,
+      "evidence": "Found 14 lines matching '^---$', need >= 4"
+    },
+    {
+      "text": "correct-theme-name",
+      "passed": true,
+      "evidence": "Found '@eastgold15/slidev-theme-jingjiang'"
+    }
+  ],
+  "summary": {
+    "passed": 10,
+    "failed": 0,
+    "total": 10,
+    "pass_rate": 1.0
+  }
+}

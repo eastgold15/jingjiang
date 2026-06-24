@@ -1,0 +1,423 @@
+{
+  "metadata": {
+    "skill_name": "jingjiang-theme",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-06-24T03:35:28Z",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 47.2,
+        "tokens": 39701,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "uses-cover-layout",
+          "passed": true,
+          "evidence": "Found 'layout: cover'"
+        },
+        {
+          "text": "uses-circle-layout",
+          "passed": true,
+          "evidence": "Found 'layout: circlet[lr]-b[rl]|layout: circle-t[lr]-b[rl]' (matches: ['layout: circle-tl-br', 'layout: circle-tr-bl', 'layout: circle-tl-br', 'layout: circle-tr-bl', 'layout: circle-tl-br'])"
+        },
+        {
+          "text": "uses-card-component",
+          "passed": true,
+          "evidence": "Found '<Card'"
+        },
+        {
+          "text": "uses-mermaid-view",
+          "passed": true,
+          "evidence": "Found '<MermaidView'"
+        },
+        {
+          "text": "uses-text-data-class",
+          "passed": true,
+          "evidence": "Found 'text-data'"
+        },
+        {
+          "text": "has-cover-divider",
+          "passed": true,
+          "evidence": "Found 'cover-divider'"
+        },
+        {
+          "text": "has-cover-footer",
+          "passed": true,
+          "evidence": "Found 'cover-footer'"
+        },
+        {
+          "text": "has-ending-slide",
+          "passed": true,
+          "evidence": "Found '\u611f\u8c22|\u8c22\u8c22|\u7ed3\u675f|Thank' (matches: ['\u611f\u8c22'])"
+        },
+        {
+          "text": "has-multiple-slides",
+          "passed": true,
+          "evidence": "Found 14 lines matching '^---$', need >= 4"
+        },
+        {
+          "text": "correct-theme-name",
+          "passed": true,
+          "evidence": "Found '@eastgold15/slidev-theme-jingjiang'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 33.4,
+        "tokens": 36649,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "uses-grid-cols-2",
+          "passed": true,
+          "evidence": "Found 'grid-cols-2'"
+        },
+        {
+          "text": "uses-card-with-accent",
+          "passed": true,
+          "evidence": "Found 'accent'"
+        },
+        {
+          "text": "has-bottom-full-card",
+          "passed": true,
+          "evidence": "Found 'full'"
+        },
+        {
+          "text": "multiple-card-tags",
+          "passed": true,
+          "evidence": "Found 3 occurrences of '<Card', need >= 3"
+        },
+        {
+          "text": "has-course-content",
+          "passed": true,
+          "evidence": "Found '\u8bfe\u7a0b'"
+        },
+        {
+          "text": "has-teacher-content",
+          "passed": true,
+          "evidence": "Found '\u5e08\u8d44'"
+        },
+        {
+          "text": "uses-gold-accent",
+          "passed": true,
+          "evidence": "Found 'F9D240|f9d240|gold|\u91d1\u9ec4|\u91d1\u8272' (matches: ['F9D240', 'F9D240', 'F9D240'])"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.875,
+        "passed": 7,
+        "failed": 1,
+        "total": 8,
+        "time_seconds": 31.2,
+        "tokens": 37005,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "mentions-cover-layout",
+          "passed": true,
+          "evidence": "Found 'cover'"
+        },
+        {
+          "text": "mentions-circle-layouts",
+          "passed": true,
+          "evidence": "Found 'circlet[lr]-b[rl]|circle-t[lr]-b[rl]' (matches: ['circle-tl-br', 'circle-tr-bl', 'circle-tl-br', 'circle-tl-br', 'circle-tr-bl', 'circle-tl-br'])"
+        },
+        {
+          "text": "mentions-card-component",
+          "passed": true,
+          "evidence": "Found 'Card'"
+        },
+        {
+          "text": "mentions-mermaid-view",
+          "passed": true,
+          "evidence": "Found 'MermaidView'"
+        },
+        {
+          "text": "mentions-scroll-view",
+          "passed": true,
+          "evidence": "Found 'ScrollView'"
+        },
+        {
+          "text": "explains-cover-footer",
+          "passed": true,
+          "evidence": "Found 'cover-footer'"
+        },
+        {
+          "text": "explains-mermaid-zoom",
+          "passed": true,
+          "evidence": "Found '\u7f29\u653e|\u653e\u5927|zoom|\u6eda\u8f6e|\u91cd\u7f6e|\u27f2' (matches: ['\u7f29\u653e', '\u6eda\u8f6e', '\u7f29\u653e', '\u6eda\u8f6e', '\u653e\u5927', '\u7f29\u653e', '\u27f2', '\u91cd\u7f6e', '\u6eda\u8f6e', '\u6eda\u8f6e', '\u653e\u5927', '\u653e\u5927', '\u7f29\u653e', '\u6eda\u8f6e', '\u6eda\u8f6e', '\u7f29\u653e', '\u653e\u5927', '\u27f2', '\u91cd\u7f6e', '\u7f29\u653e', '\u653e\u5927', '\u6eda\u8f6e', '\u7f29\u653e', '\u27f2'])"
+        },
+        {
+          "text": "mentions-color-system",
+          "passed": false,
+          "evidence": "Missing '\u914d\u8272'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 92.6,
+        "tokens": 45319,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "uses-cover-layout",
+          "passed": true,
+          "evidence": "Found 'layout: cover'"
+        },
+        {
+          "text": "uses-circle-layout",
+          "passed": true,
+          "evidence": "Found 'layout: circlet[lr]-b[rl]|layout: circle-t[lr]-b[rl]' (matches: ['layout: circletl-br', 'layout: circletr-bl', 'layout: circletl-br'])"
+        },
+        {
+          "text": "uses-card-component",
+          "passed": true,
+          "evidence": "Found '<Card'"
+        },
+        {
+          "text": "uses-mermaid-view",
+          "passed": true,
+          "evidence": "Found '<MermaidView'"
+        },
+        {
+          "text": "uses-text-data-class",
+          "passed": true,
+          "evidence": "Found 'text-data'"
+        },
+        {
+          "text": "has-cover-divider",
+          "passed": true,
+          "evidence": "Found 'cover-divider'"
+        },
+        {
+          "text": "has-cover-footer",
+          "passed": true,
+          "evidence": "Found 'cover-footer'"
+        },
+        {
+          "text": "has-ending-slide",
+          "passed": true,
+          "evidence": "Found '\u611f\u8c22|\u8c22\u8c22|\u7ed3\u675f|Thank' (matches: ['\u611f\u8c22'])"
+        },
+        {
+          "text": "has-multiple-slides",
+          "passed": true,
+          "evidence": "Found 9 lines matching '^---$', need >= 4"
+        },
+        {
+          "text": "correct-theme-name",
+          "passed": true,
+          "evidence": "Found '@eastgold15/slidev-theme-jingjiang'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 59.5,
+        "tokens": 45727,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "uses-grid-cols-2",
+          "passed": true,
+          "evidence": "Found 'grid-cols-2'"
+        },
+        {
+          "text": "uses-card-with-accent",
+          "passed": true,
+          "evidence": "Found 'accent'"
+        },
+        {
+          "text": "has-bottom-full-card",
+          "passed": true,
+          "evidence": "Found 'full'"
+        },
+        {
+          "text": "multiple-card-tags",
+          "passed": true,
+          "evidence": "Found 3 occurrences of '<Card', need >= 3"
+        },
+        {
+          "text": "has-course-content",
+          "passed": true,
+          "evidence": "Found '\u8bfe\u7a0b'"
+        },
+        {
+          "text": "has-teacher-content",
+          "passed": true,
+          "evidence": "Found '\u5e08\u8d44'"
+        },
+        {
+          "text": "uses-gold-accent",
+          "passed": true,
+          "evidence": "Found 'F9D240|f9d240|gold|\u91d1\u9ec4|\u91d1\u8272' (matches: ['F9D240', 'F9D240'])"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.875,
+        "passed": 7,
+        "failed": 1,
+        "total": 8,
+        "time_seconds": 83.6,
+        "tokens": 56118,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "mentions-cover-layout",
+          "passed": true,
+          "evidence": "Found 'cover'"
+        },
+        {
+          "text": "mentions-circle-layouts",
+          "passed": true,
+          "evidence": "Found 'circlet[lr]-b[rl]|circle-t[lr]-b[rl]' (matches: ['circle-tl-br', 'circle-tl-br', 'circle-tr-bl', 'circle-tr-bl', 'circle-tl-br', 'circle-tl-br', 'circle-tl-br', 'circle-tr-bl'])"
+        },
+        {
+          "text": "mentions-card-component",
+          "passed": true,
+          "evidence": "Found 'Card'"
+        },
+        {
+          "text": "mentions-mermaid-view",
+          "passed": true,
+          "evidence": "Found 'MermaidView'"
+        },
+        {
+          "text": "mentions-scroll-view",
+          "passed": true,
+          "evidence": "Found 'ScrollView'"
+        },
+        {
+          "text": "explains-cover-footer",
+          "passed": false,
+          "evidence": "Missing 'cover-footer'"
+        },
+        {
+          "text": "explains-mermaid-zoom",
+          "passed": true,
+          "evidence": "Found '\u7f29\u653e|\u653e\u5927|zoom|\u6eda\u8f6e|\u91cd\u7f6e|\u27f2' (matches: ['\u7f29\u653e', '\u7f29\u653e', '\u7f29\u653e', '\u6eda\u8f6e', '\u7f29\u653e', '\u653e\u5927', '\u27f2', '\u91cd\u7f6e', '\u7f29\u653e', '\u6eda\u8f6e', '\u6eda\u8f6e', '\u653e\u5927', '\u7f29\u653e', '\u6eda\u8f6e', '\u7f29\u653e', '\u653e\u5927', '\u27f2', '\u91cd\u7f6e', '\u7f29\u653e'])"
+        },
+        {
+          "text": "mentions-color-system",
+          "passed": true,
+          "evidence": "Found '\u914d\u8272'"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9583,
+        "stddev": 0.0722,
+        "min": 0.875,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 37.2667,
+        "stddev": 8.6726,
+        "min": 31.2,
+        "max": 47.2
+      },
+      "tokens": {
+        "mean": 37785.0,
+        "stddev": 1668.8247,
+        "min": 36649,
+        "max": 39701
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.9583,
+        "stddev": 0.0722,
+        "min": 0.875,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 78.5667,
+        "stddev": 17.1144,
+        "min": 59.5,
+        "max": 92.6
+      },
+      "tokens": {
+        "mean": 49054.6667,
+        "stddev": 6120.4268,
+        "min": 45319,
+        "max": 56118
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "-41.3",
+      "tokens": "-11270"
+    }
+  },
+  "notes": []
+}
